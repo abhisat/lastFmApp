@@ -29,17 +29,4 @@ describe("<SearchBar />", () => {
     const SearchBar = shallowMountSearchBar();
     expect(toJson(SearchBar)).toMatchSnapshot();
   });
-
-  // it("calls onSearchInput", () => {
-  //   const SearchBar = shallowMountSearchBar();
-  //   SearchBar.find('input').simulate();
-  //   expect(Result.find(".error")).toHaveLength(1);
-  //   expect(Result.find(".error").text()).toEqual("This is an error test.");
-  // });
-
-  // it("displays the loading spinner while loading", () => {
-  //   const Result = shallowMountSearchBar();
-  //   expect(Result.find(".result")).toHaveLength(1);
-  //   expect(Result.find(".result").text()).toEqual("This is a result test.");
-  // });
 });
