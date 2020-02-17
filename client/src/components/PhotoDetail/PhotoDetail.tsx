@@ -21,12 +21,11 @@ const PhotoDetail: React.FunctionComponent<PhotoDetailProps> = (
     link,
     media,
     publishedDate,
-    description,
     author,
     tags,
     handleBackButtonClick
   } = props;
-
+  const date: string = new Date(publishedDate).toLocaleDateString();
   return (
     <React.Fragment>
       <Button className='ui button backButton' onClick={handleBackButtonClick}>
@@ -37,10 +36,7 @@ const PhotoDetail: React.FunctionComponent<PhotoDetailProps> = (
           <Image src={media} wrapped ui={false} />
           <Card.Content>
             <Card.Header>{title}</Card.Header>
-            <Card.Meta>{publishedDate}</Card.Meta>
-            <Card.Description className={"cardDescription"}>
-              {description}
-            </Card.Description>
+            <Card.Meta>{date}</Card.Meta>
           </Card.Content>
           <Card.Content extra>
             <a>
@@ -50,7 +46,7 @@ const PhotoDetail: React.FunctionComponent<PhotoDetailProps> = (
           </Card.Content>
           <Card.Content extra>
             <a>
-              <Icon name='user' />
+              <Icon name='tags' />
               {tags}
             </a>
           </Card.Content>

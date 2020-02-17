@@ -26,14 +26,15 @@ const ResultList: React.FunctionComponent<ResultListProps> = (
   } = props;
 
   const feed = feeds ? (
-    feeds.map((feedItem: any, id: number) => {
+    feeds.map((feedItem: ResponseItem, id: number) => {
+      const date: string = new Date(feedItem.date_taken).toLocaleDateString();
       return (
-        <List.Item key={id + feedItem.title + feedItem.date}>
+        <List.Item key={id + feedItem.title + feedItem.date_taken}>
           <ResultItem
             id={id}
-            media={feedItem.media}
+            media={feedItem.media.m}
             author={feedItem.author}
-            date={feedItem.date}
+            date={date}
             title={feedItem.title}
             tags={feedItem.tags}
             isLoading={isLoading}

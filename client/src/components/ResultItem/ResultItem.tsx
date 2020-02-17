@@ -6,10 +6,10 @@ import "./ResultItem.css";
 
 export interface ResultItemData {
   id?: number;
-  media?: DetailLink;
+  media?: string;
   title?: string;
   author?: string;
-  date?: Date;
+  date?: string;
   tags?: string;
   handleClick(id: number | undefined): void;
 }
@@ -36,15 +36,23 @@ const ResultItem: React.FunctionComponent<ResultItemProps> = props => {
     <React.Fragment>
       <Container className={"resultItemContainer"}>
         <Item className={"listItem"} onClick={() => handleClick(id)}>
-          <Image className={"itemImage"} src={media.m} />
+          <Image className={"itemImage"} src={media} />
           <Item.Content className={"itemContent"}>
-            <Item.Header as='a'>{title}</Item.Header>
-            <Item.Meta>
+            <Item.Header as='a' className={"itemHeader text"}>
+              {title}
+            </Item.Header>
+            <Item.Meta className={"text"}>
               <Icon name='location arrow' />
               {date}
             </Item.Meta>
-            <Item.Extra>{author}</Item.Extra>
-            <Item.Extra className={"itemTags"}>{tags}</Item.Extra>
+            <Item.Extra className={"text"}>
+              <Icon name='user' />
+              {author}
+            </Item.Extra>
+            <Item.Extra className={"itemTags text"}>
+              <Icon name='tags' />
+              {tags}
+            </Item.Extra>
           </Item.Content>
         </Item>
       </Container>

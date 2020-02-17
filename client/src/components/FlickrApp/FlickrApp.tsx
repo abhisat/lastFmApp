@@ -2,7 +2,6 @@ import React from "react";
 import { SearchBar } from "../SearchBar";
 import { ResultList } from "../ResultList";
 import { PhotoDetail } from "../PhotoDetail";
-import { Facebook } from "react-content-loader";
 import Logo from "../../assets/logo.png";
 import { Image, Container } from "semantic-ui-react";
 import "./FlickrApp.css";
