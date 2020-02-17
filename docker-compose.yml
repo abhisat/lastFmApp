@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  flickr-app:
+    container_name: flickr-app
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    volumes:
+      - ".:/client"
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=development
+  cors-server:
+    container_name: cors-server
+    build:
+      context: ./cors-server
+      dockerfile: Dockerfile
+    volumes:
+      - ".:/cors-server"
+    ports:
+      - "8081:8080"
+    environment:
+      - NODE_ENV=development

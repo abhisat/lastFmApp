@@ -1,0 +1,25 @@
+.listItem {
+  height: 8rem;
+  display: flex;
+  cursor: pointer;
+}
+
+.itemContent {
+  padding: 20px;
+}
+
+.itemImage {
+  width: 7rem;
+  height: 7rem;
+}
+
+.itemTags {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.resultItemContainer {
+  width: 100%;
+  display: flex;
+}
