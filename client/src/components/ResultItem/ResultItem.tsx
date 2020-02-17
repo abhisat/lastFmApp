@@ -1,11 +1,12 @@
 import React from "react";
 import { Image, Item, Icon, Container } from "semantic-ui-react";
 import { Facebook } from "react-content-loader";
+import { DetailLink } from "../../types/ResponseTypes";
 import "./ResultItem.css";
 
 export interface ResultItemData {
   id?: number;
-  media?: any;
+  media?: DetailLink;
   title?: string;
   author?: string;
   date?: Date;

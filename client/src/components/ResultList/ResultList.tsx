@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { ResultItem } from "../ResultItem/ResultItem";
-import { List, Pagination } from "semantic-ui-react";
+import { List, Pagination, Container } from "semantic-ui-react";
 import "./ResultList.css";
-import { Facebook } from "react-content-loader";
+import Loader from "react-loader-spinner";
 import { ResponseItem } from "../../types/ResponseTypes";
 
 export interface ResultListProps {
@@ -43,18 +43,27 @@ const ResultList: React.FunctionComponent<ResultListProps> = (
       );
     })
   ) : (
-    <Facebook />
+    <Loader type='TailSpin' color={"#0063dc"} height={100} width={100} />
   );
 
   return (
     <React.Fragment>
-      <List divided>{feed}</List>
-      <Pagination
-        activePage={activePage}
-        onPageChange={handlePaginationClick}
-        totalPages={totalPages}
-        ellipsisItem={null}
-      />
+      <Container className={"feedContainer"}>
+        <List divided className={"list"}>
+          {feed}
+        </List>
+      </Container>
+      <Container className={"paginationContainer"}>
+        {isLoading ? null : (
+          <Pagination
+            className={"pagination"}
+            activePage={activePage}
+            onPageChange={handlePaginationClick}
+            totalPages={totalPages}
+            ellipsisItem={null}
+          />
+        )}
+      </Container>
     </React.Fragment>
   );
 };

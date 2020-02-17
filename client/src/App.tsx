@@ -23,8 +23,10 @@ const App: React.FunctionComponent = () => {
   };
 
   const handleFeedClick = (currentFeedId: number) => {
-    setCurrentFeedId(currentFeedId * activePage);
-    setCurrentFeed(feeds.items[currentFeedId]);
+    if (feedPage && activePage) {
+      setCurrentFeedId(currentFeedId);
+      setCurrentFeed(feedPage[currentFeedId]);
+    }
   };
 
   const handleBackButtonClick = () => {
@@ -39,25 +41,32 @@ const App: React.FunctionComponent = () => {
   }, []);
 
   useEffect(() => {
+    setCurrentFeedId(undefined);
+    setCurrentFeed(undefined);
     fetchFeeds();
   }, [debouncedTags]);
 
   useUpdateEffect(() => {
-    setTotalPages(feeds.items.length / itemsPerPage);
+    if (feeds) setTotalPages(feeds.items.length / itemsPerPage);
     setActivePage(1);
-    setFeedPage(getFeeds());
+    const feedList = getFeeds();
+    if (feedList) setFeedPage(feedList);
     setIsLoading(false);
   }, [feeds]);
 
   useUpdateEffect(() => {
-    setFeedPage(getFeeds());
+    const feedList = getFeeds();
+    if (feedList) setFeedPage(feedList);
   }, [activePage]);
 
   const getFeeds = () => {
-    return feeds.items.slice(
-      (activePage - 1) * itemsPerPage,
-      (activePage - 1) * itemsPerPage + itemsPerPage
-    );
+    if (feeds && activePage) {
+      return feeds.items.slice(
+        (activePage - 1) * itemsPerPage,
+        (activePage - 1) * itemsPerPage + itemsPerPage
+      );
+    }
+    return null;
   };
 
   const fetchFeeds = async function() {

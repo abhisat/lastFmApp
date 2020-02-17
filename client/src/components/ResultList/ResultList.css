@@ -1,0 +1,13 @@
+.paginationContainer {
+  display: flex !important;
+}
+.feedContainer {
+  padding-top: 10px;
+  display: flex !important;
+}
+.list {
+  margin: 0 auto !important;
+}
+.pagination {
+  margin: 0 auto !important;
+}
