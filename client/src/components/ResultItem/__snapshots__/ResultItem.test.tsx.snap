@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ResultList/> Matches the snapshot 1`] = `
+<ResultItem
+  author="nobody@flickr.com (\\"wholesalealisa\\")"
+  date="2020-02-17T00:08:53-08:00"
+  handleClick={[MockFunction]}
+  id={1}
+  isLoading={false}
+  media="https://live.staticflickr.com/65535/49546287068_db0d0b61b8_m.jpg"
+  tags=""
+  title="GODAVARI BY KERSOM 101 To 108 Series Kurtis Wholesale 8 Pcs"
+>
+  <Container
+    className="resultItemContainer"
+  >
+    <div
+      className="ui container resultItemContainer"
+    >
+      <Item
+        className="listItem"
+        onClick={[Function]}
+      >
+        <div
+          className="item listItem"
+          onClick={[Function]}
+        >
+          <Image
+            as="img"
+            className="itemImage"
+            src="https://live.staticflickr.com/65535/49546287068_db0d0b61b8_m.jpg"
+            ui={true}
+          >
+            <img
+              className="ui image itemImage"
+              src="https://live.staticflickr.com/65535/49546287068_db0d0b61b8_m.jpg"
+            />
+          </Image>
+          <ItemContent
+            className="itemContent"
+          >
+            <div
+              className="content itemContent"
+            >
+              <ItemHeader
+                as="a"
+                className="itemHeader text"
+              >
+                <a
+                  className="header itemHeader text"
+                >
+                  GODAVARI BY KERSOM 101 To 108 Series Kurtis Wholesale 8 Pcs
+                </a>
+              </ItemHeader>
+              <ItemMeta
+                className="text"
+              >
+                <div
+                  className="meta text"
+                >
+                  <Icon
+                    as="i"
+                    name="location arrow"
+                  >
+                    <i
+                      aria-hidden="true"
+                      className="location arrow icon"
+                      onClick={[Function]}
+                    />
+                  </Icon>
+                  2020-02-17T00:08:53-08:00
+                </div>
+              </ItemMeta>
+              <ItemExtra
+                className="text"
+              >
+                <div
+                  className="extra text"
+                >
+                  <Icon
+                    as="i"
+                    name="user"
+                  >
+                    <i
+                      aria-hidden="true"
+                      className="user icon"
+                      onClick={[Function]}
+                    />
+                  </Icon>
+                  nobody@flickr.com ("wholesalealisa")
+                </div>
+              </ItemExtra>
+              <ItemExtra
+                className="itemTags text"
+              >
+                <div
+                  className="extra itemTags text"
+                >
+                  <Icon
+                    as="i"
+                    name="tags"
+                  >
+                    <i
+                      aria-hidden="true"
+                      className="tags icon"
+                      onClick={[Function]}
+                    />
+                  </Icon>
+                </div>
+              </ItemExtra>
+            </div>
+          </ItemContent>
+        </div>
+      </Item>
+    </div>
+  </Container>
+</ResultItem>
+`;

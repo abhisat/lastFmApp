@@ -7,9 +7,9 @@ import {
   PaginationProps,
   Header
 } from "semantic-ui-react";
-import "./ResultList.css";
 import Loader from "react-loader-spinner";
 import { ResponseItem } from "../../types/ResponseTypes";
+import "./ResultList.css";
 
 export interface ResultListProps {
   title: string;

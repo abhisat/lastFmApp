@@ -1,0 +1,431 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App/> Matches the snapshot 1`] = `
+<App>
+  <FlickrApp
+    handleBackButtonClick={[Function]}
+    handleFeedClick={[Function]}
+    handlePaginationClick={[Function]}
+    handleSearchInput={[Function]}
+    isLoading={true}
+  >
+    <Container
+      className="appContainer"
+    >
+      <div
+        className="ui container appContainer"
+      >
+        <Image
+          as="img"
+          className="logo"
+          src="logo.png"
+          ui={true}
+        >
+          <img
+            className="ui image logo"
+            src="logo.png"
+          />
+        </Image>
+        <SearchBar
+          isLoading={true}
+          onSearchInput={[Function]}
+        >
+          <Container
+            className="searchContainer"
+          >
+            <div
+              className="ui container searchContainer"
+            >
+              <Input
+                className="searchBar"
+                focus={true}
+                loading={true}
+                onChange={[Function]}
+                placeholder="Search for ..."
+                size="large"
+                type="text"
+              >
+                <div
+                  className="ui large focus loading icon input searchBar"
+                >
+                  <input
+                    onChange={[Function]}
+                    placeholder="Search for ..."
+                    type="text"
+                  />
+                  <Icon
+                    as="i"
+                    name="spinner"
+                  >
+                    <i
+                      aria-hidden="true"
+                      className="spinner icon"
+                      onClick={[Function]}
+                    />
+                  </Icon>
+                </div>
+              </Input>
+            </div>
+          </Container>
+        </SearchBar>
+        <ResultList
+          handleFeedClick={[Function]}
+          handlePaginationClick={[Function]}
+          isLoading={true}
+        >
+          <Container
+            className="feedContainer"
+          >
+            <div
+              className="ui container feedContainer"
+            >
+              <List
+                className="list"
+                divided={true}
+              >
+                <div
+                  className="ui divided list list"
+                  role="list"
+                >
+                  <Loader
+                    className=""
+                    color="#0063dc"
+                    height={100}
+                    style={Object {}}
+                    timeout={0}
+                    type="TailSpin"
+                    visible={true}
+                    width={100}
+                  >
+                    <div
+                      aria-busy="true"
+                      className=""
+                      style={Object {}}
+                    >
+                      <TailSpin
+                        className=""
+                        color="#0063dc"
+                        height={100}
+                        label="audio-loading"
+                        style={Object {}}
+                        timeout={0}
+                        type="TailSpin"
+                        visible={true}
+                        width={100}
+                      >
+                        <svg
+                          aria-label="audio-loading"
+                          height={100}
+                          viewBox="0 0 38 38"
+                          width={100}
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <defs>
+                            <linearGradient
+                              id="a"
+                              x1="8.042%"
+                              x2="65.682%"
+                              y1="0%"
+                              y2="23.865%"
+                            >
+                              <stop
+                                offset="0%"
+                                stopColor="#0063dc"
+                                stopOpacity="0"
+                              />
+                              <stop
+                                offset="63.146%"
+                                stopColor="#0063dc"
+                                stopOpacity=".631"
+                              />
+                              <stop
+                                offset="100%"
+                                stopColor="#0063dc"
+                              />
+                            </linearGradient>
+                          </defs>
+                          <g
+                            fill="none"
+                            fillRule="evenodd"
+                          >
+                            <g
+                              transform="translate(1 1)"
+                            >
+                              <path
+                                d="M36 18c0-9.94-8.06-18-18-18"
+                                id="Oval-2"
+                                stroke="#0063dc"
+                                strokeWidth="2"
+                              >
+                                <animateTransform
+                                  attributeName="transform"
+                                  dur="0.9s"
+                                  from="0 18 18"
+                                  repeatCount="indefinite"
+                                  to="360 18 18"
+                                  type="rotate"
+                                />
+                              </path>
+                              <circle
+                                cx="36"
+                                cy="18"
+                                fill="#fff"
+                                r="1"
+                              >
+                                <animateTransform
+                                  attributeName="transform"
+                                  dur="0.9s"
+                                  from="0 18 18"
+                                  repeatCount="indefinite"
+                                  to="360 18 18"
+                                  type="rotate"
+                                />
+                              </circle>
+                            </g>
+                          </g>
+                        </svg>
+                      </TailSpin>
+                    </div>
+                  </Loader>
+                </div>
+              </List>
+            </div>
+          </Container>
+          <Container
+            className="paginationContainer"
+          >
+            <div
+              className="ui container paginationContainer"
+            >
+              <Pagination
+                aria-label="Pagination Navigation"
+                boundaryRange={1}
+                className="pagination"
+                ellipsisItem={null}
+                firstItem={
+                  Object {
+                    "aria-label": "First item",
+                    "content": "«",
+                  }
+                }
+                lastItem={
+                  Object {
+                    "aria-label": "Last item",
+                    "content": "»",
+                  }
+                }
+                nextItem={
+                  Object {
+                    "aria-label": "Next item",
+                    "content": "⟩",
+                  }
+                }
+                onPageChange={[Function]}
+                pageItem={Object {}}
+                prevItem={
+                  Object {
+                    "aria-label": "Previous item",
+                    "content": "⟨",
+                  }
+                }
+                siblingRange={1}
+              >
+                <Menu
+                  aria-label="Pagination Navigation"
+                  className="pagination"
+                  pagination={true}
+                  role="navigation"
+                >
+                  <div
+                    aria-label="Pagination Navigation"
+                    className="ui pagination pagination menu"
+                    role="navigation"
+                  >
+                    <PaginationItem
+                      active={false}
+                      aria-label="First item"
+                      content="«"
+                      key="firstItem-1"
+                      onClick={[Function]}
+                      type="firstItem"
+                      value={1}
+                    >
+                      <MenuItem
+                        active={false}
+                        aria-current={false}
+                        aria-disabled={false}
+                        aria-label="First item"
+                        content="«"
+                        onClick={[Function]}
+                        onKeyDown={[Function]}
+                        tabIndex={0}
+                        type="firstItem"
+                        value={1}
+                      >
+                        <a
+                          aria-current={false}
+                          aria-disabled={false}
+                          aria-label="First item"
+                          className="item"
+                          onClick={[Function]}
+                          onKeyDown={[Function]}
+                          tabIndex={0}
+                          type="firstItem"
+                          value={1}
+                        >
+                          «
+                        </a>
+                      </MenuItem>
+                    </PaginationItem>
+                    <PaginationItem
+                      active={false}
+                      aria-label="Previous item"
+                      content="⟨"
+                      key="prevItem-NaN"
+                      onClick={[Function]}
+                      type="prevItem"
+                      value={NaN}
+                    >
+                      <MenuItem
+                        active={false}
+                        aria-current={false}
+                        aria-disabled={false}
+                        aria-label="Previous item"
+                        content="⟨"
+                        onClick={[Function]}
+                        onKeyDown={[Function]}
+                        tabIndex={0}
+                        type="prevItem"
+                        value={NaN}
+                      >
+                        <a
+                          aria-current={false}
+                          aria-disabled={false}
+                          aria-label="Previous item"
+                          className="item"
+                          onClick={[Function]}
+                          onKeyDown={[Function]}
+                          tabIndex={0}
+                          type="prevItem"
+                          value={NaN}
+                        >
+                          ⟨
+                        </a>
+                      </MenuItem>
+                    </PaginationItem>
+                    <PaginationItem
+                      active={false}
+                      content={1}
+                      key="pageItem-1"
+                      onClick={[Function]}
+                      type="pageItem"
+                      value={1}
+                    >
+                      <MenuItem
+                        active={false}
+                        aria-current={false}
+                        aria-disabled={false}
+                        content={1}
+                        onClick={[Function]}
+                        onKeyDown={[Function]}
+                        tabIndex={0}
+                        type="pageItem"
+                        value={1}
+                      >
+                        <a
+                          aria-current={false}
+                          aria-disabled={false}
+                          className="item"
+                          onClick={[Function]}
+                          onKeyDown={[Function]}
+                          tabIndex={0}
+                          type="pageItem"
+                          value={1}
+                        >
+                          1
+                        </a>
+                      </MenuItem>
+                    </PaginationItem>
+                    <PaginationItem
+                      active={false}
+                      aria-label="Next item"
+                      content="⟩"
+                      key="nextItem-NaN"
+                      onClick={[Function]}
+                      type="nextItem"
+                      value={NaN}
+                    >
+                      <MenuItem
+                        active={false}
+                        aria-current={false}
+                        aria-disabled={false}
+                        aria-label="Next item"
+                        content="⟩"
+                        onClick={[Function]}
+                        onKeyDown={[Function]}
+                        tabIndex={0}
+                        type="nextItem"
+                        value={NaN}
+                      >
+                        <a
+                          aria-current={false}
+                          aria-disabled={false}
+                          aria-label="Next item"
+                          className="item"
+                          onClick={[Function]}
+                          onKeyDown={[Function]}
+                          tabIndex={0}
+                          type="nextItem"
+                          value={NaN}
+                        >
+                          ⟩
+                        </a>
+                      </MenuItem>
+                    </PaginationItem>
+                    <PaginationItem
+                      active={false}
+                      aria-label="Last item"
+                      content="»"
+                      key="lastItem-NaN"
+                      onClick={[Function]}
+                      type="lastItem"
+                      value={NaN}
+                    >
+                      <MenuItem
+                        active={false}
+                        aria-current={false}
+                        aria-disabled={false}
+                        aria-label="Last item"
+                        content="»"
+                        onClick={[Function]}
+                        onKeyDown={[Function]}
+                        tabIndex={0}
+                        type="lastItem"
+                        value={NaN}
+                      >
+                        <a
+                          aria-current={false}
+                          aria-disabled={false}
+                          aria-label="Last item"
+                          className="item"
+                          onClick={[Function]}
+                          onKeyDown={[Function]}
+                          tabIndex={0}
+                          type="lastItem"
+                          value={NaN}
+                        >
+                          »
+                        </a>
+                      </MenuItem>
+                    </PaginationItem>
+                  </div>
+                </Menu>
+              </Pagination>
+            </div>
+          </Container>
+        </ResultList>
+      </div>
+    </Container>
+  </FlickrApp>
+</App>
+`;

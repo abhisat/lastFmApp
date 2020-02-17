@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchBar /> Matches the snapshot 1`] = `
+<Container
+  className="searchContainer"
+>
+  <Input
+    className="searchBar"
+    focus={true}
+    loading={false}
+    onChange={[MockFunction]}
+    placeholder="Search for ..."
+    size="large"
+    type="text"
+  />
+</Container>
+`;

@@ -7,7 +7,6 @@ export interface PhotoDetailProps {
   link: string;
   media: string;
   publishedDate: string;
-  description: string;
   author: string;
   tags: string;
   handleBackButtonClick(): void;

@@ -4,10 +4,10 @@ import { ResultList } from "../ResultList";
 import { PhotoDetail } from "../PhotoDetail";
 import Logo from "../../assets/logo.png";
 import { Image, Container, PaginationProps } from "semantic-ui-react";
-import "./FlickrApp.css";
 import { ResponseItem } from "../../types/ResponseTypes";
+import "./FlickrApp.css";
 
-interface FlickrAppProps {
+export interface FlickrAppProps {
   feedTitle: string;
   feeds: Array<ResponseItem>;
   currentFeed: ResponseItem;
@@ -43,7 +43,6 @@ const FlickrApp: React.FunctionComponent<FlickrAppProps> = props => {
       link={currentFeed.link}
       media={currentFeed.media.m}
       publishedDate={currentFeed.published}
-      description={currentFeed.description}
       author={currentFeed.author}
       tags={currentFeed.tags}
       handleBackButtonClick={handleBackButtonClick}
