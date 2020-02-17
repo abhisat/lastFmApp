@@ -51,10 +51,8 @@ const App: React.FunctionComponent = () => {
   };
 
   const getSearchURL = (tags: string | undefined) => {
-    const corsServerURL = "http://localhost:8080/";
-    let baseAPIUrl = new URL(
-      "https://flickr.com/services/feeds/photos_public.gne"
-    );
+    const corsServerURL = process.env.REACT_APP_CORS_SERVER!;
+    let baseAPIUrl = new URL(process.env.REACT_APP_BASE_URL!);
     if (tags) baseAPIUrl.searchParams.set("tags", tags);
     baseAPIUrl.searchParams.set("format", "json");
     baseAPIUrl.searchParams.set("nojsoncallback", "1");
