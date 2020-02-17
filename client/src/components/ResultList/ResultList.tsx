@@ -57,14 +57,17 @@ const ResultList: React.FunctionComponent<ResultListProps> = (
   ) : (
     <Loader type='TailSpin' color={"#0063dc"} height={100} width={100} />
   );
-
+  const headerContent = feeds
+    ? feeds.length != 0
+      ? `... Showing ${title}`
+      : `Sorry no content was found.`
+    : null;
   return (
     <React.Fragment>
       {isLoading ? null : (
-        <Header
-          className={"resultHeader"}
-          as='h2'
-        >{`... Showing ${title}`}</Header>
+        <Header className={"resultHeader"} as='h2'>
+          {headerContent}
+        </Header>
       )}
       <Container className={"feedContainer"}>
         <List divided className={"list"}>
@@ -72,7 +75,7 @@ const ResultList: React.FunctionComponent<ResultListProps> = (
         </List>
       </Container>
       <Container className={"paginationContainer"}>
-        {isLoading ? null : (
+        {isLoading && totalPages ? null : (
           <Pagination
             className={"pagination"}
             activePage={activePage}

@@ -12,6 +12,8 @@ services:
       - "3001:3000"
     environment:
       - NODE_ENV=development
+      - REACT_APP_BASE_URL=https://flickr.com/services/feeds/photos_public.gne
+      - REACT_APP_CORS_SERVER=http://localhost:8081/
   cors-server:
     container_name: cors-server
     build:

@@ -30,31 +30,33 @@ const ResultItem: React.FunctionComponent<ResultItemProps> = props => {
     handleClick
   } = props;
 
-  return isLoading ? (
-    <Facebook className={"loader"} />
-  ) : (
+  return (
     <React.Fragment>
       <Container className={"resultItemContainer"}>
-        <Item className={"listItem"} onClick={() => handleClick(id)}>
-          <Image className={"itemImage"} src={media} />
-          <Item.Content className={"itemContent"}>
-            <Item.Header as='a' className={"itemHeader text"}>
-              {title}
-            </Item.Header>
-            <Item.Meta className={"text"}>
-              <Icon name='location arrow' />
-              {date}
-            </Item.Meta>
-            <Item.Extra className={"text"}>
-              <Icon name='user' />
-              {author}
-            </Item.Extra>
-            <Item.Extra className={"itemTags text"}>
-              <Icon name='tags' />
-              {tags}
-            </Item.Extra>
-          </Item.Content>
-        </Item>
+        {isLoading ? (
+          <Facebook className={"loader"} />
+        ) : (
+          <Item className={"listItem"} onClick={() => handleClick(id)}>
+            <Image className={"itemImage"} src={media} />
+            <Item.Content className={"itemContent"}>
+              <Item.Header as='a' className={"itemHeader text"}>
+                {title}
+              </Item.Header>
+              <Item.Meta className={"text"}>
+                <Icon name='location arrow' />
+                {date}
+              </Item.Meta>
+              <Item.Extra className={"text"}>
+                <Icon name='user' />
+                {author}
+              </Item.Extra>
+              <Item.Extra className={"itemTags text"}>
+                <Icon name='tags' />
+                {tags}
+              </Item.Extra>
+            </Item.Content>
+          </Item>
+        )}
       </Container>
     </React.Fragment>
   );
