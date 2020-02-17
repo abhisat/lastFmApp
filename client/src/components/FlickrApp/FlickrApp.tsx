@@ -3,17 +3,21 @@ import { SearchBar } from "../SearchBar";
 import { ResultList } from "../ResultList";
 import { PhotoDetail } from "../PhotoDetail";
 import Logo from "../../assets/logo.png";
-import { Image, Container } from "semantic-ui-react";
+import { Image, Container, PaginationProps } from "semantic-ui-react";
 import "./FlickrApp.css";
 import { ResponseItem } from "../../types/ResponseTypes";
 
 interface FlickrAppProps {
+  feedTitle: string;
   feeds: Array<ResponseItem>;
   currentFeed: ResponseItem;
   isLoading: boolean;
   activePage: number;
   totalPages: number;
-  handlePaginationClick(e: React.MouseEvent<HTMLElement>, pageInfo: any): void;
+  handlePaginationClick(
+    e: React.MouseEvent<HTMLElement>,
+    pageInfo: PaginationProps
+  ): void;
   handleFeedClick(id: number): void;
   handleBackButtonClick(): void;
   handleSearchInput(e: React.ChangeEvent<HTMLInputElement>): void;
@@ -21,6 +25,7 @@ interface FlickrAppProps {
 
 const FlickrApp: React.FunctionComponent<FlickrAppProps> = props => {
   const {
+    feedTitle,
     feeds,
     isLoading,
     handleSearchInput,
@@ -45,6 +50,7 @@ const FlickrApp: React.FunctionComponent<FlickrAppProps> = props => {
     />
   ) : (
     <ResultList
+      title={feedTitle}
       feeds={feeds}
       isLoading={isLoading}
       activePage={activePage}

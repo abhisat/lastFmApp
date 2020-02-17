@@ -1,22 +1,33 @@
 import React, { useState } from "react";
 import { ResultItem } from "../ResultItem/ResultItem";
-import { List, Pagination, Container } from "semantic-ui-react";
+import {
+  List,
+  Pagination,
+  Container,
+  PaginationProps,
+  Header
+} from "semantic-ui-react";
 import "./ResultList.css";
 import Loader from "react-loader-spinner";
 import { ResponseItem } from "../../types/ResponseTypes";
 
 export interface ResultListProps {
+  title: string;
   feeds: Array<ResponseItem>;
   isLoading: boolean;
   activePage: number;
   totalPages: number;
   handleFeedClick(id: number): void;
-  handlePaginationClick(e: React.MouseEvent<HTMLElement>, pageInfo: any): void;
+  handlePaginationClick(
+    e: React.MouseEvent<HTMLElement>,
+    pageInfo: PaginationProps
+  ): void;
 }
 const ResultList: React.FunctionComponent<ResultListProps> = (
   props: ResultListProps
 ) => {
   const {
+    title,
     feeds,
     isLoading,
     totalPages,
@@ -49,6 +60,12 @@ const ResultList: React.FunctionComponent<ResultListProps> = (
 
   return (
     <React.Fragment>
+      {isLoading ? null : (
+        <Header
+          className={"resultHeader"}
+          as='h2'
+        >{`... Showing ${title}`}</Header>
+      )}
       <Container className={"feedContainer"}>
         <List divided className={"list"}>
           {feed}

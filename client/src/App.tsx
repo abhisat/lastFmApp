@@ -5,8 +5,10 @@ import { useDebounce } from "./utils/DebounceHook";
 import { useUpdateEffect } from "./utils/UseUpdateEffect";
 import { FlickrApp } from "./components/FlickrApp";
 import { Response, ResponseItem } from "./types/ResponseTypes";
+import { PaginationProps } from "semantic-ui-react";
 
 const App: React.FunctionComponent = () => {
+  const [feedTitle, setFeedTitle] = useState<string>();
   const [tags, setTags] = useState<string>();
   const [feeds, setFeeds] = useState<Response>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -14,25 +16,7 @@ const App: React.FunctionComponent = () => {
   const [activePage, setActivePage] = useState<number>();
   const [totalPages, setTotalPages] = useState<number>();
   const [feedPage, setFeedPage] = useState<Array<ResponseItem>>();
-  const [currentFeedId, setCurrentFeedId] = useState<number>();
   const itemsPerPage = 10;
-
-  const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const input: string = e.target.value;
-    setTags(input);
-  };
-
-  const handleFeedClick = (currentFeedId: number) => {
-    if (feedPage && activePage) {
-      setCurrentFeedId(currentFeedId);
-      setCurrentFeed(feedPage[currentFeedId]);
-    }
-  };
-
-  const handleBackButtonClick = () => {
-    setCurrentFeedId(undefined);
-    setCurrentFeed(undefined);
-  };
 
   const debouncedTags = useDebounce(tags, 500);
 
@@ -40,8 +24,7 @@ const App: React.FunctionComponent = () => {
     fetchFeeds();
   }, []);
 
-  useEffect(() => {
-    setCurrentFeedId(undefined);
+  useUpdateEffect(() => {
     setCurrentFeed(undefined);
     fetchFeeds();
   }, [debouncedTags]);
@@ -59,21 +42,12 @@ const App: React.FunctionComponent = () => {
     if (feedList) setFeedPage(feedList);
   }, [activePage]);
 
-  const getFeeds = () => {
-    if (feeds && activePage) {
-      return feeds.items.slice(
-        (activePage - 1) * itemsPerPage,
-        (activePage - 1) * itemsPerPage + itemsPerPage
-      );
-    }
-    return null;
-  };
-
   const fetchFeeds = async function() {
     setIsLoading(true);
     const result = await axios(getSearchURL(tags));
     const parsedResult: Response = result.data;
     setFeeds(parsedResult);
+    setFeedTitle(parsedResult.title);
   };
 
   const getSearchURL = (tags: string | undefined) => {
@@ -87,15 +61,45 @@ const App: React.FunctionComponent = () => {
     return corsServerURL + baseAPIUrl;
   };
 
+  const getFeeds = () => {
+    if (feeds && activePage) {
+      return feeds.items.slice(
+        (activePage - 1) * itemsPerPage,
+        (activePage - 1) * itemsPerPage + itemsPerPage
+      );
+    }
+    return null;
+  };
+
+  const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input: string = e.target.value;
+    setTags(input);
+  };
+
+  const handleFeedClick = (currentFeedId: number) => {
+    if (feedPage && activePage) {
+      setCurrentFeed(feedPage[currentFeedId]);
+    }
+  };
+
+  const handleBackButtonClick = () => {
+    setCurrentFeed(undefined);
+  };
+
   const handlePaginationClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    pageInfo: any
+    pageInfo: PaginationProps
   ) => {
-    setActivePage(pageInfo.activePage);
+    let pageNumber: number | undefined;
+    typeof pageInfo.activePage == "string"
+      ? (pageNumber = parseInt(pageInfo.activePage))
+      : (pageNumber = pageInfo.activePage);
+    setActivePage(pageNumber);
   };
 
   return (
     <FlickrApp
+      feedTitle={feedTitle}
       feeds={feedPage}
       isLoading={isLoading}
       activePage={activePage}
