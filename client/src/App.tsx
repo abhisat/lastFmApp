@@ -4,15 +4,16 @@ import axios from "axios";
 import { useDebounce } from "./utils/DebounceHook";
 import { useUpdateEffect } from "./utils/UseUpdateEffect";
 import { FlickrApp } from "./components/FlickrApp";
+import { Response, ResponseItem } from "./types/ResponseTypes";
 
 const App: React.FunctionComponent = () => {
   const [tags, setTags] = useState<string>();
-  const [feeds, setFeeds] = useState();
+  const [feeds, setFeeds] = useState<Response>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [currentFeed, setCurrentFeed] = useState();
-  const [activePage, setActivePage] = useState();
-  const [totalPages, setTotalPages] = useState();
-  const [feedPage, setFeedPage] = useState();
+  const [currentFeed, setCurrentFeed] = useState<ResponseItem>();
+  const [activePage, setActivePage] = useState<number>();
+  const [totalPages, setTotalPages] = useState<number>();
+  const [feedPage, setFeedPage] = useState<Array<ResponseItem>>();
   const [currentFeedId, setCurrentFeedId] = useState<number>();
   const itemsPerPage = 10;
 
@@ -22,7 +23,7 @@ const App: React.FunctionComponent = () => {
   };
 
   const handleFeedClick = (currentFeedId: number) => {
-    setCurrentFeedId(currentFeedId);
+    setCurrentFeedId(currentFeedId * activePage);
     setCurrentFeed(feeds.items[currentFeedId]);
   };
 
@@ -44,6 +45,7 @@ const App: React.FunctionComponent = () => {
   useUpdateEffect(() => {
     setTotalPages(feeds.items.length / itemsPerPage);
     setActivePage(1);
+    setFeedPage(getFeeds());
     setIsLoading(false);
   }, [feeds]);
 
@@ -61,7 +63,8 @@ const App: React.FunctionComponent = () => {
   const fetchFeeds = async function() {
     setIsLoading(true);
     const result = await axios(getSearchURL(tags));
-    setFeeds(result.data);
+    const parsedResult: Response = result.data;
+    setFeeds(parsedResult);
   };
 
   const getSearchURL = (tags: string | undefined) => {

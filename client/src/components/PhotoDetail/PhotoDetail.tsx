@@ -6,7 +6,7 @@ export interface PhotoDetailProps {
   title: string;
   link: string;
   media: string;
-  publishedDate: Date;
+  publishedDate: string;
   description: string;
   author: string;
   tags: string;

@@ -3,9 +3,10 @@ import { ResultItem } from "../ResultItem/ResultItem";
 import { List, Pagination } from "semantic-ui-react";
 import "./ResultList.css";
 import { Facebook } from "react-content-loader";
+import { ResponseItem } from "../../types/ResponseTypes";
 
 export interface ResultListProps {
-  feeds: any;
+  feeds: Array<ResponseItem>;
   isLoading: boolean;
   activePage: number;
   totalPages: number;

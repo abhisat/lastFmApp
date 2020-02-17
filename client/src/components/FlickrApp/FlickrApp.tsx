@@ -6,10 +6,11 @@ import { Facebook } from "react-content-loader";
 import Logo from "../../assets/logo.png";
 import { Image, Container } from "semantic-ui-react";
 import "./FlickrApp.css";
+import { ResponseItem } from "../../types/ResponseTypes";
 
 interface FlickrAppProps {
-  feeds: any;
-  currentFeed: any;
+  feeds: Array<ResponseItem>;
+  currentFeed: ResponseItem;
   isLoading: boolean;
   activePage: number;
   totalPages: number;
