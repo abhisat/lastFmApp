@@ -1,15 +1,15 @@
-import React, { useState, useEffect, SyntheticEvent, Component } from "react";
-import "./App.css";
-import axios from "axios";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { useDebounce } from "./utils/DebounceHook";
-import { useUpdateEffect } from "./utils/UseUpdateEffect";
-import { Home } from "./components/Home/Home";
-import { Response, ResponseItem } from "./types/ResponseTypes";
-import { PaginationProps } from "semantic-ui-react";
-import Routes from "./routes";
+import React, { useState, useEffect, SyntheticEvent } from "react";
+import { useDebounce } from "../../utils/DebounceHook";
+import { useUpdateEffect } from "../../utils/UseUpdateEffect";
+import { SearchBar } from "../SearchBar/SearchBar";
+import { ArtistList } from "../ArtistList/ArtistList";
+import { ArtistDetail } from "../ArtistDetail/ArtistDetail";
+import Logo from "../../assets/logo.png";
+import { Image, Container, PaginationProps } from "semantic-ui-react";
+import { ResponseItem } from "../../types/ResponseTypes";
+import "./LastFmApp.css";
 
-const App: React.FunctionComponent = () => {
+const Home: React.FunctionComponent = () => {
   const [feedTitle, setFeedTitle] = useState<string>();
   const [country, setCountry] = useState<string>();
   const [feeds, setFeeds] = useState<Response>();
@@ -19,8 +19,6 @@ const App: React.FunctionComponent = () => {
   const [totalPages, setTotalPages] = useState<number>();
   const [feedPage, setFeedPage] = useState<Array<ResponseItem>>();
   const itemsPerPage = 10;
-
-  const debouncedTags = useDebounce(country, 500);
 
   useEffect(() => {
     fetchFeeds();
@@ -68,55 +66,35 @@ const App: React.FunctionComponent = () => {
     baseAPIUrl.searchParams.set("limit", "10");
     return corsServerURL + baseAPIUrl;
   };
-
-  const getFeeds = () => {
-    if (feeds && activePage) {
-      return feeds.artist.slice(
-        (activePage - 1) * itemsPerPage,
-        (activePage - 1) * itemsPerPage + itemsPerPage
-      );
-    }
-    return null;
-  };
-
-  const handleSearchInput = (e: SyntheticEvent, data: object) => {
-    const input: string = data["value"];
-    setCountry(input);
-  };
-
-  const handleFeedClick = (currentFeedId: number) => {
-    if (feedPage && activePage) {
-      setCurrentFeed(feedPage[currentFeedId]);
-    }
-  };
-
-  const handleBackButtonClick = () => {
-    setCurrentFeed(undefined);
-  };
-
-  const handlePaginationClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    pageInfo: PaginationProps
-  ) => {
-    let pageNumber: number | undefined;
-    typeof pageInfo.activePage == "string"
-      ? (pageNumber = parseInt(pageInfo.activePage))
-      : (pageNumber = pageInfo.activePage);
-    setActivePage(pageNumber);
-  };
-
+  const pageContent = currentFeed ? (
+    <ArtistDetail
+      name={currentFeed.name}
+      url={currentFeed.url}
+      playCount={currentFeed.playcount}
+      listeners={currentFeed.listeners}
+      imageLink={currentFeed.url}
+      handleBackButtonClick={handleBackButtonClick}
+    />
+  ) : (
+    <ArtistList
+      title={feedTitle}
+      feeds={feeds}
+      isLoading={isLoading}
+      activePage={activePage}
+      totalPages={totalPages}
+      handlePaginationClick={handlePaginationClick}
+      handleFeedClick={handleFeedClick}
+    />
+  );
   return (
-    <Switch>
-      {Routes.map((route, i) => (
-        <Route
-          key={i}
-          path={route.path}
-          exact={route.exact}
-          component={route.component}
-        />
-      ))}
-    </Switch>
+    <React.Fragment>
+      <Container className='appContainer'>
+        <Image src={Logo} className={"logo"}></Image>
+        <SearchBar isLoading={isLoading} onSearchInput={handleSearchInput} />
+        {pageContent}
+      </Container>
+    </React.Fragment>
   );
 };
 
-export { App };
+export { Home };

@@ -1,5 +1,5 @@
 import React from "react";
-import { LastFmApp, LastFmAppProps } from "./LastFmApp";
+import { Home, HomeProps } from "./Home";
 import EnzymeAdapter from "enzyme-adapter-react-16";
 import Enzyme, { mount } from "enzyme";
 import toJson from "enzyme-to-json";
@@ -13,7 +13,7 @@ const handleFeedClick: jest.Mock = jest.fn();
 const handlebackButtonClick: jest.Mock = jest.fn();
 const handleSearchInput: jest.Mock = jest.fn();
 
-const props: LastFmAppProps = {
+const props: HomeProps = {
   feedTitle: "Uploads from everyone",
   feeds: [
     {
@@ -71,7 +71,7 @@ const props: LastFmAppProps = {
 };
 
 const mountApp = () => {
-  const wrapper: Enzyme.ReactWrapper = mount(<LastFmApp {...props} />);
+  const wrapper: Enzyme.ReactWrapper = mount(<Home {...props} />);
   wrapper.update();
   return wrapper;
 };

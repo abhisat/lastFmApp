@@ -12,31 +12,7 @@ import { ResponseItem } from "../../types/ResponseTypes";
 import "./ArtistList.css";
 import { listeners } from "cluster";
 
-export interface ArtistListProps {
-  title: string;
-  feeds: Array<ResponseItem>;
-  isLoading: boolean;
-  activePage: number;
-  totalPages: number;
-  handleFeedClick(id: number): void;
-  handlePaginationClick(
-    e: React.MouseEvent<HTMLElement>,
-    pageInfo: PaginationProps
-  ): void;
-}
-const ArtistList: React.FunctionComponent<ArtistListProps> = (
-  props: ArtistListProps
-) => {
-  const {
-    title,
-    feeds,
-    isLoading,
-    totalPages,
-    activePage,
-    handlePaginationClick,
-    handleFeedClick
-  } = props;
-
+const ArtistList: React.FunctionComponent = () => {
   const feed = feeds ? (
     feeds.map((feedItem: ResponseItem, id: number) => {
       return (

@@ -2,26 +2,7 @@ import React from "react";
 import "./ArtistDetail.css";
 import { Button, Icon, Image, Card, Container } from "semantic-ui-react";
 
-export interface ArtistDetailProps {
-  name: string;
-  imageLink: string;
-  playCount: string;
-  listeners: string;
-  url: string;
-  handleBackButtonClick(): void;
-}
-
-const ArtistDetail: React.FunctionComponent<ArtistDetailProps> = (
-  props: ArtistDetailProps
-) => {
-  const {
-    name,
-    imageLink,
-    playCount,
-    listeners,
-    url,
-    handleBackButtonClick
-  } = props;
+const ArtistDetail: React.FunctionComponent = () => {
   return (
     <React.Fragment>
       <Button className='ui button backButton' onClick={handleBackButtonClick}>
