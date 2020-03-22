@@ -1,31 +1,31 @@
 import React from "react";
 import { Image, Item, Icon, Container } from "semantic-ui-react";
 import { Facebook } from "react-content-loader";
-import { DetailLink } from "../../types/ResponseTypes";
-import "./ResultItem.css";
+import "./ArtistListItem.css";
 
-export interface ResultItemData {
+export interface ArtistListItemData {
   id?: number;
-  media?: string;
-  title?: string;
-  author?: string;
-  date?: string;
-  tags?: string;
+  name?: string;
+  playcount?: string;
+  listeners?: string;
+  url?: string;
+  image?: string;
+  isLoading: boolean;
   handleClick(id: number | undefined): void;
 }
 
-export interface ResultItemProps extends ResultItemData {
+export interface ArtistListItemProps extends ArtistListItemData {
   isLoading: boolean;
 }
 
-const ResultItem: React.FunctionComponent<ResultItemProps> = props => {
+const ArtistListItem: React.FunctionComponent<ArtistListItemProps> = props => {
   const {
     id,
-    media,
-    author,
-    title,
-    date,
-    tags,
+    name,
+    playcount,
+    listeners,
+    url,
+    image,
     isLoading,
     handleClick
   } = props;
@@ -37,22 +37,22 @@ const ResultItem: React.FunctionComponent<ResultItemProps> = props => {
           <Facebook className={"loader"} />
         ) : (
           <Item className={"listItem"} onClick={() => handleClick(id)}>
-            <Image className={"itemImage"} src={media} />
+            <Image className={"itemImage"} src={image} />
             <Item.Content className={"itemContent"}>
               <Item.Header as='a' className={"itemHeader text"}>
-                {title}
+                {name}
               </Item.Header>
               <Item.Meta className={"text"}>
                 <Icon name='location arrow' />
-                {date}
+                {playcount}
               </Item.Meta>
               <Item.Extra className={"text"}>
                 <Icon name='user' />
-                {author}
+                {listeners}
               </Item.Extra>
               <Item.Extra className={"itemTags text"}>
                 <Icon name='tags' />
-                {tags}
+                {url}
               </Item.Extra>
             </Item.Content>
           </Item>
@@ -62,4 +62,4 @@ const ResultItem: React.FunctionComponent<ResultItemProps> = props => {
   );
 };
 
-export { ResultItem };
+export { ArtistListItem };

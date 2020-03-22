@@ -1,13 +1,13 @@
 import React from "react";
-import { SearchBar } from "../SearchBar";
-import { ResultList } from "../ResultList";
-import { PhotoDetail } from "../PhotoDetail";
+import { SearchBar } from "../SearchBar/SearchBar";
+import { ArtistList } from "../ArtistList/ArtistList";
+import { ArtistDetail } from "../ArtistDetail/ArtistDetail";
 import Logo from "../../assets/logo.png";
 import { Image, Container, PaginationProps } from "semantic-ui-react";
 import { ResponseItem } from "../../types/ResponseTypes";
-import "./FlickrApp.css";
+import "./LastFmApp.css";
 
-export interface FlickrAppProps {
+export interface LastFmAppProps {
   feedTitle: string;
   feeds: Array<ResponseItem>;
   currentFeed: ResponseItem;
@@ -23,7 +23,7 @@ export interface FlickrAppProps {
   handleSearchInput(e: React.ChangeEvent<HTMLInputElement>): void;
 }
 
-const FlickrApp: React.FunctionComponent<FlickrAppProps> = props => {
+const LastFmApp: React.FunctionComponent<LastFmAppProps> = props => {
   const {
     feedTitle,
     feeds,
@@ -38,17 +38,16 @@ const FlickrApp: React.FunctionComponent<FlickrAppProps> = props => {
   } = props;
 
   const pageContent = currentFeed ? (
-    <PhotoDetail
-      title={currentFeed.title}
-      link={currentFeed.link}
-      media={currentFeed.media.m}
-      publishedDate={currentFeed.published}
-      author={currentFeed.author}
-      tags={currentFeed.tags}
+    <ArtistDetail
+      name={currentFeed.name}
+      url={currentFeed.url}
+      playCount={currentFeed.playcount}
+      listeners={currentFeed.listeners}
+      imageLink={currentFeed.url}
       handleBackButtonClick={handleBackButtonClick}
     />
   ) : (
-    <ResultList
+    <ArtistList
       title={feedTitle}
       feeds={feeds}
       isLoading={isLoading}
@@ -69,4 +68,4 @@ const FlickrApp: React.FunctionComponent<FlickrAppProps> = props => {
   );
 };
 
-export { FlickrApp };
+export { LastFmApp };

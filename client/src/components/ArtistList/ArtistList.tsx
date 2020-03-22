@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ResultItem } from "../ResultItem/ResultItem";
+import { ArtistListItem } from "../ArtistListItem/ArtistListItem";
 import {
   List,
   Pagination,
@@ -9,9 +9,10 @@ import {
 } from "semantic-ui-react";
 import Loader from "react-loader-spinner";
 import { ResponseItem } from "../../types/ResponseTypes";
-import "./ResultList.css";
+import "./ArtistList.css";
+import { listeners } from "cluster";
 
-export interface ResultListProps {
+export interface ArtistListProps {
   title: string;
   feeds: Array<ResponseItem>;
   isLoading: boolean;
@@ -23,8 +24,8 @@ export interface ResultListProps {
     pageInfo: PaginationProps
   ): void;
 }
-const ResultList: React.FunctionComponent<ResultListProps> = (
-  props: ResultListProps
+const ArtistList: React.FunctionComponent<ArtistListProps> = (
+  props: ArtistListProps
 ) => {
   const {
     title,
@@ -38,16 +39,15 @@ const ResultList: React.FunctionComponent<ResultListProps> = (
 
   const feed = feeds ? (
     feeds.map((feedItem: ResponseItem, id: number) => {
-      const date: string = new Date(feedItem.date_taken).toLocaleDateString();
       return (
-        <List.Item key={id + feedItem.title + feedItem.date_taken}>
-          <ResultItem
+        <List.Item key={id + feedItem.name + feedItem.url}>
+          <ArtistListItem
             id={id}
-            media={feedItem.media.m}
-            author={feedItem.author}
-            date={date}
-            title={feedItem.title}
-            tags={feedItem.tags}
+            name={feedItem.name}
+            playcount={feedItem.playcount}
+            listeners={feedItem.listeners}
+            url={feedItem.url}
+            image={feedItem.image[0]["#text"]}
             isLoading={isLoading}
             handleClick={handleFeedClick}
           />
@@ -89,4 +89,4 @@ const ResultList: React.FunctionComponent<ResultListProps> = (
   );
 };
 
-export { ResultList };
+export { ArtistList };

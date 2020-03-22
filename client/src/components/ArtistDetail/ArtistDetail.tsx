@@ -1,52 +1,49 @@
 import React from "react";
-import "./PhotoDetail.css";
+import "./ArtistDetail.css";
 import { Button, Icon, Image, Card, Container } from "semantic-ui-react";
 
-export interface PhotoDetailProps {
-  title: string;
-  link: string;
-  media: string;
-  publishedDate: string;
-  author: string;
-  tags: string;
+export interface ArtistDetailProps {
+  name: string;
+  imageLink: string;
+  playCount: string;
+  listeners: string;
+  url: string;
   handleBackButtonClick(): void;
 }
 
-const PhotoDetail: React.FunctionComponent<PhotoDetailProps> = (
-  props: PhotoDetailProps
+const ArtistDetail: React.FunctionComponent<ArtistDetailProps> = (
+  props: ArtistDetailProps
 ) => {
   const {
-    title,
-    link,
-    media,
-    publishedDate,
-    author,
-    tags,
+    name,
+    imageLink,
+    playCount,
+    listeners,
+    url,
     handleBackButtonClick
   } = props;
-  const date: string = new Date(publishedDate).toLocaleDateString();
   return (
     <React.Fragment>
       <Button className='ui button backButton' onClick={handleBackButtonClick}>
         <Icon name='arrow left' />
       </Button>
       <Container className={"photoCardContainer"}>
-        <Card href={link} className={"photoCard"}>
-          <Image src={media} wrapped ui={false} />
+        <Card href={url} className={"photoCard"}>
+          <Image src={url} wrapped ui={false} />
           <Card.Content>
-            <Card.Header>{title}</Card.Header>
-            <Card.Meta>{date}</Card.Meta>
+            <Card.Header>{name}</Card.Header>
+            <Card.Meta>{playCount}</Card.Meta>
           </Card.Content>
           <Card.Content extra>
             <a>
               <Icon name='user' />
-              {author}
+              {listeners}
             </a>
           </Card.Content>
           <Card.Content extra>
             <a>
               <Icon name='tags' />
-              {tags}
+              {name}
             </a>
           </Card.Content>
         </Card>
@@ -55,4 +52,4 @@ const PhotoDetail: React.FunctionComponent<PhotoDetailProps> = (
   );
 };
 
-export { PhotoDetail };
+export { ArtistDetail };

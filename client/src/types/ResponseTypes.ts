@@ -1,24 +1,18 @@
-export interface DetailLink {
-  m: string;
+export interface ImageItem {
+  "#text": string;
+  size: string;
 }
 
 export interface ResponseItem {
-  title: string;
-  link: string;
-  media: DetailLink;
-  date_taken: string;
-  description: string;
-  published: string;
-  author: string;
-  author_id: string;
-  tags: string;
+  name: string;
+  playcount: string;
+  listeners: string;
+  mbid: string;
+  url: string;
+  streamable: string;
+  image: Array<ImageItem>;
 }
 
 export interface Response {
-  title: string;
-  link: string;
-  description: string;
-  modified: string;
-  generator: string;
-  items: Array<ResponseItem>;
+  artist: Array<ResponseItem>;
 }

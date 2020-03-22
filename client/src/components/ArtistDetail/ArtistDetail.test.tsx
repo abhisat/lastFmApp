@@ -1,5 +1,5 @@
 import React from "react";
-import { PhotoDetail, PhotoDetailProps } from ".";
+import { ArtistDetail, ArtistDetailProps } from "./ArtistDetail";
 import EnzymeAdapter from "enzyme-adapter-react-16";
 import Enzyme, { mount } from "enzyme";
 import toJson from "enzyme-to-json";
@@ -10,7 +10,7 @@ Enzyme.configure({
 
 const handlebackButtonClick: jest.Mock = jest.fn();
 
-const props: PhotoDetailProps = {
+const props: ArtistDetailProps = {
   title: "GODAVARI BY KERSOM 101 To 108 Series Kurtis Wholesale 8 Pcs",
   link: "https://www.flickr.com/photos/186442569@N08/49546287068/",
   media: "https://live.staticflickr.com/65535/49546287068_db0d0b61b8_m.jpg",
@@ -21,7 +21,7 @@ const props: PhotoDetailProps = {
 };
 
 const mountApp = () => {
-  const wrapper: Enzyme.ReactWrapper = mount(<PhotoDetail {...props} />);
+  const wrapper: Enzyme.ReactWrapper = mount(<ArtistDetail {...props} />);
   wrapper.update();
   return wrapper;
 };

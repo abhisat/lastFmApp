@@ -1,6 +1,6 @@
 # FlickrApp
 
-FlickrApp is a react app for searching feeds on flickr.
+LastFmApp is an app to search the most populars artists in a country using the LastFm API.
 
 The demo app is hosted on: [FlickrApp](https://flickrapp-demo.herokuapp.com "Flickr App")
 

@@ -3,13 +3,13 @@ import "./App.css";
 import axios from "axios";
 import { useDebounce } from "./utils/DebounceHook";
 import { useUpdateEffect } from "./utils/UseUpdateEffect";
-import { FlickrApp } from "./components/FlickrApp";
+import { LastFmApp } from "./components/LastFmApp";
 import { Response, ResponseItem } from "./types/ResponseTypes";
 import { PaginationProps } from "semantic-ui-react";
 
 const App: React.FunctionComponent = () => {
   const [feedTitle, setFeedTitle] = useState<string>();
-  const [tags, setTags] = useState<string>();
+  const [country, setCountry] = useState<string>();
   const [feeds, setFeeds] = useState<Response>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [currentFeed, setCurrentFeed] = useState<ResponseItem>();
@@ -18,7 +18,7 @@ const App: React.FunctionComponent = () => {
   const [feedPage, setFeedPage] = useState<Array<ResponseItem>>();
   const itemsPerPage = 10;
 
-  const debouncedTags = useDebounce(tags, 500);
+  const debouncedTags = useDebounce(country, 500);
 
   useEffect(() => {
     fetchFeeds();
@@ -30,7 +30,7 @@ const App: React.FunctionComponent = () => {
   }, [debouncedTags]);
 
   useUpdateEffect(() => {
-    if (feeds) setTotalPages(feeds.items.length / itemsPerPage);
+    if (feeds) setTotalPages(feeds.artist.length / itemsPerPage);
     setActivePage(1);
     const feedList = getFeeds();
     if (feedList) setFeedPage(feedList);
@@ -44,24 +44,32 @@ const App: React.FunctionComponent = () => {
 
   const fetchFeeds = async function() {
     setIsLoading(true);
-    const result = await axios(getSearchURL(tags));
-    const parsedResult: Response = result.data;
+    const result = await axios(getSearchURL(country));
+    const parsedResult: Response = country
+      ? result.data.topartists
+      : result.data.artists;
     setFeeds(parsedResult);
-    setFeedTitle(parsedResult.title);
   };
 
-  const getSearchURL = (tags: string | undefined) => {
-    const corsServerURL = process.env.REACT_APP_CORS_SERVER!;
-    let baseAPIUrl = new URL(process.env.REACT_APP_BASE_URL!);
-    if (tags) baseAPIUrl.searchParams.set("tags", tags);
+  const getSearchURL = (country: string | undefined) => {
+    const corsServerURL = "http://localhost:8081/";
+    let baseAPIUrl = new URL("http://ws.audioscrobbler.com/2.0/");
+    if (country) {
+      baseAPIUrl.searchParams.set("country", country);
+      baseAPIUrl.searchParams.set("method", "geo.gettopartists");
+    } else {
+      baseAPIUrl.searchParams.set("method", "chart.gettopartists");
+    }
+
+    baseAPIUrl.searchParams.set("api_key", "9bfb0463ecfb5dd130cb40efbd898af0");
     baseAPIUrl.searchParams.set("format", "json");
-    baseAPIUrl.searchParams.set("nojsoncallback", "1");
+    baseAPIUrl.searchParams.set("limit", "10");
     return corsServerURL + baseAPIUrl;
   };
 
   const getFeeds = () => {
     if (feeds && activePage) {
-      return feeds.items.slice(
+      return feeds.artist.slice(
         (activePage - 1) * itemsPerPage,
         (activePage - 1) * itemsPerPage + itemsPerPage
       );
@@ -71,7 +79,7 @@ const App: React.FunctionComponent = () => {
 
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input: string = e.target.value;
-    setTags(input);
+    setCountry(input);
   };
 
   const handleFeedClick = (currentFeedId: number) => {
@@ -96,7 +104,7 @@ const App: React.FunctionComponent = () => {
   };
 
   return (
-    <FlickrApp
+    <LastFmApp
       feedTitle={feedTitle}
       feeds={feedPage}
       isLoading={isLoading}

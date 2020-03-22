@@ -1,8 +1,8 @@
 version: "3.7"
 
 services:
-  flickr-app:
-    container_name: flickr-app
+  lastfm-app:
+    container_name: lastfm-app
     build:
       context: ./client
       dockerfile: Dockerfile

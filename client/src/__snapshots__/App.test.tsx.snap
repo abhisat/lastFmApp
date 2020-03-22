@@ -1,431 +1,428 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<App/> Matches the snapshot 1`] = `
-<App>
-  <FlickrApp
-    handleBackButtonClick={[Function]}
-    handleFeedClick={[Function]}
-    handlePaginationClick={[Function]}
-    handleSearchInput={[Function]}
-    isLoading={true}
-  >
-    <Container
-      className="appContainer"
-    >
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
       <div
-        className="ui container appContainer"
+        class="ui container appContainer"
       >
-        <Image
-          as="img"
-          className="logo"
+        <img
+          class="ui image logo"
           src="logo.png"
-          ui={true}
+        />
+        <div
+          class="ui container searchContainer"
         >
-          <img
-            className="ui image logo"
-            src="logo.png"
-          />
-        </Image>
-        <SearchBar
-          isLoading={true}
-          onSearchInput={[Function]}
+          <div
+            class="ui large focus input searchBar"
+          >
+            <input
+              placeholder="Search for ..."
+              type="text"
+            />
+          </div>
+        </div>
+        <h2
+          class="ui header resultHeader"
+        />
+        <div
+          class="ui container feedContainer"
         >
-          <Container
-            className="searchContainer"
+          <div
+            class="ui divided list list"
+            role="list"
           >
             <div
-              className="ui container searchContainer"
+              aria-busy="true"
+              class=""
             >
-              <Input
-                className="searchBar"
-                focus={true}
-                loading={true}
-                onChange={[Function]}
-                placeholder="Search for ..."
-                size="large"
-                type="text"
+              <svg
+                aria-label="audio-loading"
+                height="100"
+                viewBox="0 0 38 38"
+                width="100"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <div
-                  className="ui large focus loading icon input searchBar"
-                >
-                  <input
-                    onChange={[Function]}
-                    placeholder="Search for ..."
-                    type="text"
-                  />
-                  <Icon
-                    as="i"
-                    name="spinner"
+                <defs>
+                  <lineargradient
+                    id="a"
+                    x1="8.042%"
+                    x2="65.682%"
+                    y1="0%"
+                    y2="23.865%"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="spinner icon"
-                      onClick={[Function]}
+                    <stop
+                      offset="0%"
+                      stop-color="#0063dc"
+                      stop-opacity="0"
                     />
-                  </Icon>
-                </div>
-              </Input>
+                    <stop
+                      offset="63.146%"
+                      stop-color="#0063dc"
+                      stop-opacity=".631"
+                    />
+                    <stop
+                      offset="100%"
+                      stop-color="#0063dc"
+                    />
+                  </lineargradient>
+                </defs>
+                <g
+                  fill="none"
+                  fill-rule="evenodd"
+                >
+                  <g
+                    transform="translate(1 1)"
+                  >
+                    <path
+                      d="M36 18c0-9.94-8.06-18-18-18"
+                      id="Oval-2"
+                      stroke="#0063dc"
+                      stroke-width="2"
+                    >
+                      <animatetransform
+                        attributeName="transform"
+                        dur="0.9s"
+                        from="0 18 18"
+                        repeatCount="indefinite"
+                        to="360 18 18"
+                        type="rotate"
+                      />
+                    </path>
+                    <circle
+                      cx="36"
+                      cy="18"
+                      fill="#fff"
+                      r="1"
+                    >
+                      <animatetransform
+                        attributeName="transform"
+                        dur="0.9s"
+                        from="0 18 18"
+                        repeatCount="indefinite"
+                        to="360 18 18"
+                        type="rotate"
+                      />
+                    </circle>
+                  </g>
+                </g>
+              </svg>
             </div>
-          </Container>
-        </SearchBar>
-        <ResultList
-          handleFeedClick={[Function]}
-          handlePaginationClick={[Function]}
-          isLoading={true}
+          </div>
+        </div>
+        <div
+          class="ui container paginationContainer"
         >
-          <Container
-            className="feedContainer"
+          <div
+            aria-label="Pagination Navigation"
+            class="ui pagination pagination menu"
+            role="navigation"
           >
-            <div
-              className="ui container feedContainer"
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="First item"
+              class="item"
+              tabindex="0"
+              type="firstItem"
+              value="1"
             >
-              <List
-                className="list"
-                divided={true}
-              >
-                <div
-                  className="ui divided list list"
-                  role="list"
-                >
-                  <Loader
-                    className=""
-                    color="#0063dc"
-                    height={100}
-                    style={Object {}}
-                    timeout={0}
-                    type="TailSpin"
-                    visible={true}
-                    width={100}
-                  >
-                    <div
-                      aria-busy="true"
-                      className=""
-                      style={Object {}}
-                    >
-                      <TailSpin
-                        className=""
-                        color="#0063dc"
-                        height={100}
-                        label="audio-loading"
-                        style={Object {}}
-                        timeout={0}
-                        type="TailSpin"
-                        visible={true}
-                        width={100}
-                      >
-                        <svg
-                          aria-label="audio-loading"
-                          height={100}
-                          viewBox="0 0 38 38"
-                          width={100}
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <defs>
-                            <linearGradient
-                              id="a"
-                              x1="8.042%"
-                              x2="65.682%"
-                              y1="0%"
-                              y2="23.865%"
-                            >
-                              <stop
-                                offset="0%"
-                                stopColor="#0063dc"
-                                stopOpacity="0"
-                              />
-                              <stop
-                                offset="63.146%"
-                                stopColor="#0063dc"
-                                stopOpacity=".631"
-                              />
-                              <stop
-                                offset="100%"
-                                stopColor="#0063dc"
-                              />
-                            </linearGradient>
-                          </defs>
-                          <g
-                            fill="none"
-                            fillRule="evenodd"
-                          >
-                            <g
-                              transform="translate(1 1)"
-                            >
-                              <path
-                                d="M36 18c0-9.94-8.06-18-18-18"
-                                id="Oval-2"
-                                stroke="#0063dc"
-                                strokeWidth="2"
-                              >
-                                <animateTransform
-                                  attributeName="transform"
-                                  dur="0.9s"
-                                  from="0 18 18"
-                                  repeatCount="indefinite"
-                                  to="360 18 18"
-                                  type="rotate"
-                                />
-                              </path>
-                              <circle
-                                cx="36"
-                                cy="18"
-                                fill="#fff"
-                                r="1"
-                              >
-                                <animateTransform
-                                  attributeName="transform"
-                                  dur="0.9s"
-                                  from="0 18 18"
-                                  repeatCount="indefinite"
-                                  to="360 18 18"
-                                  type="rotate"
-                                />
-                              </circle>
-                            </g>
-                          </g>
-                        </svg>
-                      </TailSpin>
-                    </div>
-                  </Loader>
-                </div>
-              </List>
-            </div>
-          </Container>
-          <Container
-            className="paginationContainer"
-          >
-            <div
-              className="ui container paginationContainer"
+              «
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Previous item"
+              class="item"
+              tabindex="0"
+              type="prevItem"
+              value="1"
             >
-              <Pagination
-                aria-label="Pagination Navigation"
-                boundaryRange={1}
-                className="pagination"
-                ellipsisItem={null}
-                firstItem={
-                  Object {
-                    "aria-label": "First item",
-                    "content": "«",
-                  }
-                }
-                lastItem={
-                  Object {
-                    "aria-label": "Last item",
-                    "content": "»",
-                  }
-                }
-                nextItem={
-                  Object {
-                    "aria-label": "Next item",
-                    "content": "⟩",
-                  }
-                }
-                onPageChange={[Function]}
-                pageItem={Object {}}
-                prevItem={
-                  Object {
-                    "aria-label": "Previous item",
-                    "content": "⟨",
-                  }
-                }
-                siblingRange={1}
-              >
-                <Menu
-                  aria-label="Pagination Navigation"
-                  className="pagination"
-                  pagination={true}
-                  role="navigation"
-                >
-                  <div
-                    aria-label="Pagination Navigation"
-                    className="ui pagination pagination menu"
-                    role="navigation"
-                  >
-                    <PaginationItem
-                      active={false}
-                      aria-label="First item"
-                      content="«"
-                      key="firstItem-1"
-                      onClick={[Function]}
-                      type="firstItem"
-                      value={1}
-                    >
-                      <MenuItem
-                        active={false}
-                        aria-current={false}
-                        aria-disabled={false}
-                        aria-label="First item"
-                        content="«"
-                        onClick={[Function]}
-                        onKeyDown={[Function]}
-                        tabIndex={0}
-                        type="firstItem"
-                        value={1}
-                      >
-                        <a
-                          aria-current={false}
-                          aria-disabled={false}
-                          aria-label="First item"
-                          className="item"
-                          onClick={[Function]}
-                          onKeyDown={[Function]}
-                          tabIndex={0}
-                          type="firstItem"
-                          value={1}
-                        >
-                          «
-                        </a>
-                      </MenuItem>
-                    </PaginationItem>
-                    <PaginationItem
-                      active={false}
-                      aria-label="Previous item"
-                      content="⟨"
-                      key="prevItem-NaN"
-                      onClick={[Function]}
-                      type="prevItem"
-                      value={NaN}
-                    >
-                      <MenuItem
-                        active={false}
-                        aria-current={false}
-                        aria-disabled={false}
-                        aria-label="Previous item"
-                        content="⟨"
-                        onClick={[Function]}
-                        onKeyDown={[Function]}
-                        tabIndex={0}
-                        type="prevItem"
-                        value={NaN}
-                      >
-                        <a
-                          aria-current={false}
-                          aria-disabled={false}
-                          aria-label="Previous item"
-                          className="item"
-                          onClick={[Function]}
-                          onKeyDown={[Function]}
-                          tabIndex={0}
-                          type="prevItem"
-                          value={NaN}
-                        >
-                          ⟨
-                        </a>
-                      </MenuItem>
-                    </PaginationItem>
-                    <PaginationItem
-                      active={false}
-                      content={1}
-                      key="pageItem-1"
-                      onClick={[Function]}
-                      type="pageItem"
-                      value={1}
-                    >
-                      <MenuItem
-                        active={false}
-                        aria-current={false}
-                        aria-disabled={false}
-                        content={1}
-                        onClick={[Function]}
-                        onKeyDown={[Function]}
-                        tabIndex={0}
-                        type="pageItem"
-                        value={1}
-                      >
-                        <a
-                          aria-current={false}
-                          aria-disabled={false}
-                          className="item"
-                          onClick={[Function]}
-                          onKeyDown={[Function]}
-                          tabIndex={0}
-                          type="pageItem"
-                          value={1}
-                        >
-                          1
-                        </a>
-                      </MenuItem>
-                    </PaginationItem>
-                    <PaginationItem
-                      active={false}
-                      aria-label="Next item"
-                      content="⟩"
-                      key="nextItem-NaN"
-                      onClick={[Function]}
-                      type="nextItem"
-                      value={NaN}
-                    >
-                      <MenuItem
-                        active={false}
-                        aria-current={false}
-                        aria-disabled={false}
-                        aria-label="Next item"
-                        content="⟩"
-                        onClick={[Function]}
-                        onKeyDown={[Function]}
-                        tabIndex={0}
-                        type="nextItem"
-                        value={NaN}
-                      >
-                        <a
-                          aria-current={false}
-                          aria-disabled={false}
-                          aria-label="Next item"
-                          className="item"
-                          onClick={[Function]}
-                          onKeyDown={[Function]}
-                          tabIndex={0}
-                          type="nextItem"
-                          value={NaN}
-                        >
-                          ⟩
-                        </a>
-                      </MenuItem>
-                    </PaginationItem>
-                    <PaginationItem
-                      active={false}
-                      aria-label="Last item"
-                      content="»"
-                      key="lastItem-NaN"
-                      onClick={[Function]}
-                      type="lastItem"
-                      value={NaN}
-                    >
-                      <MenuItem
-                        active={false}
-                        aria-current={false}
-                        aria-disabled={false}
-                        aria-label="Last item"
-                        content="»"
-                        onClick={[Function]}
-                        onKeyDown={[Function]}
-                        tabIndex={0}
-                        type="lastItem"
-                        value={NaN}
-                      >
-                        <a
-                          aria-current={false}
-                          aria-disabled={false}
-                          aria-label="Last item"
-                          className="item"
-                          onClick={[Function]}
-                          onKeyDown={[Function]}
-                          tabIndex={0}
-                          type="lastItem"
-                          value={NaN}
-                        >
-                          »
-                        </a>
-                      </MenuItem>
-                    </PaginationItem>
-                  </div>
-                </Menu>
-              </Pagination>
-            </div>
-          </Container>
-        </ResultList>
+              ⟨
+            </a>
+            <a
+              aria-current="true"
+              aria-disabled="false"
+              class="active item"
+              tabindex="0"
+              type="pageItem"
+              value="1"
+            >
+              1
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              class="item"
+              tabindex="0"
+              type="pageItem"
+              value="2"
+            >
+              2
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Next item"
+              class="item"
+              tabindex="0"
+              type="nextItem"
+              value="2"
+            >
+              ⟩
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Last item"
+              class="item"
+              tabindex="0"
+              type="lastItem"
+              value="2"
+            >
+              »
+            </a>
+          </div>
+        </div>
       </div>
-    </Container>
-  </FlickrApp>
-</App>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="ui container appContainer"
+    >
+      <img
+        class="ui image logo"
+        src="logo.png"
+      />
+      <div
+        class="ui container searchContainer"
+      >
+        <div
+          class="ui large focus input searchBar"
+        >
+          <input
+            placeholder="Search for ..."
+            type="text"
+          />
+        </div>
+      </div>
+      <h2
+        class="ui header resultHeader"
+      />
+      <div
+        class="ui container feedContainer"
+      >
+        <div
+          class="ui divided list list"
+          role="list"
+        >
+          <div
+            aria-busy="true"
+            class=""
+          >
+            <svg
+              aria-label="audio-loading"
+              height="100"
+              viewBox="0 0 38 38"
+              width="100"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <lineargradient
+                  id="a"
+                  x1="8.042%"
+                  x2="65.682%"
+                  y1="0%"
+                  y2="23.865%"
+                >
+                  <stop
+                    offset="0%"
+                    stop-color="#0063dc"
+                    stop-opacity="0"
+                  />
+                  <stop
+                    offset="63.146%"
+                    stop-color="#0063dc"
+                    stop-opacity=".631"
+                  />
+                  <stop
+                    offset="100%"
+                    stop-color="#0063dc"
+                  />
+                </lineargradient>
+              </defs>
+              <g
+                fill="none"
+                fill-rule="evenodd"
+              >
+                <g
+                  transform="translate(1 1)"
+                >
+                  <path
+                    d="M36 18c0-9.94-8.06-18-18-18"
+                    id="Oval-2"
+                    stroke="#0063dc"
+                    stroke-width="2"
+                  >
+                    <animatetransform
+                      attributeName="transform"
+                      dur="0.9s"
+                      from="0 18 18"
+                      repeatCount="indefinite"
+                      to="360 18 18"
+                      type="rotate"
+                    />
+                  </path>
+                  <circle
+                    cx="36"
+                    cy="18"
+                    fill="#fff"
+                    r="1"
+                  >
+                    <animatetransform
+                      attributeName="transform"
+                      dur="0.9s"
+                      from="0 18 18"
+                      repeatCount="indefinite"
+                      to="360 18 18"
+                      type="rotate"
+                    />
+                  </circle>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ui container paginationContainer"
+      >
+        <div
+          aria-label="Pagination Navigation"
+          class="ui pagination pagination menu"
+          role="navigation"
+        >
+          <a
+            aria-current="false"
+            aria-disabled="false"
+            aria-label="First item"
+            class="item"
+            tabindex="0"
+            type="firstItem"
+            value="1"
+          >
+            «
+          </a>
+          <a
+            aria-current="false"
+            aria-disabled="false"
+            aria-label="Previous item"
+            class="item"
+            tabindex="0"
+            type="prevItem"
+            value="1"
+          >
+            ⟨
+          </a>
+          <a
+            aria-current="true"
+            aria-disabled="false"
+            class="active item"
+            tabindex="0"
+            type="pageItem"
+            value="1"
+          >
+            1
+          </a>
+          <a
+            aria-current="false"
+            aria-disabled="false"
+            class="item"
+            tabindex="0"
+            type="pageItem"
+            value="2"
+          >
+            2
+          </a>
+          <a
+            aria-current="false"
+            aria-disabled="false"
+            aria-label="Next item"
+            class="item"
+            tabindex="0"
+            type="nextItem"
+            value="2"
+          >
+            ⟩
+          </a>
+          <a
+            aria-current="false"
+            aria-disabled="false"
+            aria-label="Last item"
+            class="item"
+            tabindex="0"
+            type="lastItem"
+            value="2"
+          >
+            »
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
 `;

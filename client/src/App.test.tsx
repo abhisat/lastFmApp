@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { App } from "./App";
 import EnzymeAdapter from "enzyme-adapter-react-16";
 import Enzyme, { mount } from "enzyme";
+import { render, fireEvent, RenderResult, wait } from "@testing-library/react";
 import toJson from "enzyme-to-json";
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
+import { act } from "react-test-renderer";
+import { Container } from "semantic-ui-react";
 
 Enzyme.configure({
   adapter: new EnzymeAdapter()
 });
 var mock = new MockAdapter(axios);
-
 const fakeResponse = {
   title: "Uploads from everyone",
   link: "https://www.flickr.com/photos/",
@@ -308,23 +310,21 @@ const fakeResponse = {
   ]
 };
 
-mock.onGet().reply(200, fakeResponse);
-
 const props = {};
 
 const state = {};
 
 const mountApp = (props = {}, state = {}) => {
-  const wrapper = mount(<App {...props} />);
-  wrapper.update();
+  const wrapper = render(<App {...props} />);
   return wrapper;
 };
 
 describe("<App/>", () => {
-  let App: Enzyme.ReactWrapper;
+  let App: RenderResult;
 
   beforeEach(() => {
     App = mountApp(props, state);
+    mock.onGet().reply(200, fakeResponse);
   });
 
   afterEach(() => {});
@@ -334,6 +334,17 @@ describe("<App/>", () => {
   });
 
   it("Matches the snapshot", () => {
-    expect(toJson(App)).toMatchSnapshot();
+    expect(App).toMatchSnapshot();
+  });
+
+  it("gets the result on search input", async () => {
+    const { container, getByText } = mountApp(props, state);
+    const searchBar = container.querySelector("input");
+    console.log(searchBar);
+
+    fireEvent.input(searchBar, { target: { value: "search" } });
+
+    await wait(() => getByText("Uploads from everyone"));
+    expect(container.querySelectorAll(".resultItem").length).toBe(10);
   });
 });

@@ -1,5 +1,5 @@
 import React from "react";
-import { ResultList, ResultListProps } from ".";
+import { ArtistList, ArtistListProps } from "./ArtistList";
 import EnzymeAdapter from "enzyme-adapter-react-16";
 import Enzyme, { mount } from "enzyme";
 import toJson from "enzyme-to-json";
@@ -11,7 +11,7 @@ Enzyme.configure({
 const handleFeedClick: jest.Mock = jest.fn();
 const handlePaginationClick: jest.Mock = jest.fn();
 
-const props: ResultListProps = {
+const props: ArtistListProps = {
   title: "Uploads from everyone",
   feeds: [
     {
@@ -52,7 +52,7 @@ const props: ResultListProps = {
 };
 
 const mountApp = () => {
-  const wrapper: Enzyme.ReactWrapper = mount(<ResultList {...props} />);
+  const wrapper: Enzyme.ReactWrapper = mount(<ArtistList {...props} />);
   wrapper.update();
   return wrapper;
 };

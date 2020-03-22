@@ -4,9 +4,9 @@
     "start": "docker-compose up",
     "test": "cd client && yarn test"
   },
-  "name": "flickrapp",
+  "name": "lastfmapp",
   "version": "1.0.0",
-  "description": "Post code checker app",
+  "description": "App to search the most popular artists by country",
   "main": "index.js",
   "author": "Abhishek Satpathy",
   "license": "MIT"
