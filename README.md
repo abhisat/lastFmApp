@@ -8,7 +8,7 @@ The demo app is hosted on: [LastFMApp](https://lastfm-app-demo.herokuapp.com "La
 
 After cloning the repository with:
 
-git clone https://github.com/abhisat/FlickrApp.git
+git clone https://github.com/abhisat/lastFmApp.git
 
 Dependencies to run the app locally:
 
