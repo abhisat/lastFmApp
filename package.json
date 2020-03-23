@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "dev-build": "docker-compose up --build",
-    "start": "docker-compose up",
+    "dev-install": "cd client && yarn install && cd ../cors-server && yarn install",
+    "start-app": "cd client && yarn start",
+    "start-cors": "cd cors-server && yarn start",
     "test": "cd client && yarn test"
   },
   "name": "lastfmapp",

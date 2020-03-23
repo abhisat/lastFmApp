@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ResultList/> Matches the snapshot 1`] = `
+<Fragment>
+  <Header
+    as="h2"
+    className="resultHeader"
+  >
+    ... Showing Uploads from everyone
+  </Header>
+  <Container
+    className="feedContainer"
+  >
+    <List
+      className="list"
+      divided={true}
+    >
+      <ListItem
+        key="0Arctic Monkeyshttps://www.last.fm/music/Arctic+Monkeys"
+      >
+        <ResultListItem
+          handleClick={[MockFunction]}
+          image="https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          isLoading={false}
+          listeners="3618819"
+          name="Arctic Monkeys"
+          playcount="349443530"
+          url="https://www.last.fm/music/Arctic+Monkeys"
+        />
+      </ListItem>
+      <ListItem
+        key="1Tyler, the Creatorhttps://www.last.fm/music/Tyler,+the+Creator"
+      >
+        <ResultListItem
+          handleClick={[MockFunction]}
+          image="https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          isLoading={false}
+          listeners="934630"
+          name="Tyler, the Creator"
+          playcount="71334421"
+          url="https://www.last.fm/music/Tyler,+the+Creator"
+        />
+      </ListItem>
+    </List>
+  </Container>
+</Fragment>
+`;

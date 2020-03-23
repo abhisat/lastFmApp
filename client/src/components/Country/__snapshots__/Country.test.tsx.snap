@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Country/> Matches the snapshot 1`] = `
+<Fragment>
+  <Container
+    className="appContainer"
+  >
+    <Image
+      as="img"
+      className="logo"
+      src="logo.png"
+      ui={true}
+    />
+    <withRouter() />
+    <Loader
+      className=""
+      color="#b90000"
+      height={100}
+      style={Object {}}
+      timeout={0}
+      type="TailSpin"
+      visible={true}
+      width={100}
+    />
+    <Pagination
+      activePage={1}
+      aria-label="Pagination Navigation"
+      boundaryRange={1}
+      className="pagination"
+      ellipsisItem={null}
+      firstItem={
+        Object {
+          "aria-label": "First item",
+          "content": "«",
+        }
+      }
+      lastItem={
+        Object {
+          "aria-label": "Last item",
+          "content": "»",
+        }
+      }
+      nextItem={
+        Object {
+          "aria-label": "Next item",
+          "content": "⟩",
+        }
+      }
+      onPageChange={[Function]}
+      pageItem={Object {}}
+      prevItem={
+        Object {
+          "aria-label": "Previous item",
+          "content": "⟨",
+        }
+      }
+      siblingRange={1}
+    />
+  </Container>
+</Fragment>
+`;

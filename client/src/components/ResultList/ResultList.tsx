@@ -1,19 +1,19 @@
 import React, { SyntheticEvent } from "react";
-import { ArtistListItem } from "./ArtistListItem/";
+import { ResultListItem } from "./ResultListItem/ResultListItem";
 import { List, Container, Header } from "semantic-ui-react";
 import Loader from "react-loader-spinner";
 import { ResponseItem } from "../../types/ResponseTypes";
-import "./ArtistList.css";
+import "./ResultList.css";
 
-export interface ArtistListProps {
+export interface ResultListProps {
   title: string;
   feeds: Array<ResponseItem>;
   isLoading: boolean;
-  handleFeedClick(value: string, e: SyntheticEvent): void;
+  handleFeedClick?(value: string, e: SyntheticEvent): void;
 }
 
-const ArtistList: React.FunctionComponent<ArtistListProps> = (
-  props: ArtistListProps
+const ResultList: React.FunctionComponent<ResultListProps> = (
+  props: ResultListProps
 ) => {
   const { title, feeds, isLoading, handleFeedClick } = props;
 
@@ -21,8 +21,7 @@ const ArtistList: React.FunctionComponent<ArtistListProps> = (
     feeds.map((feedItem: ResponseItem, id: number) => {
       return (
         <List.Item key={id + feedItem.name + feedItem.url}>
-          <ArtistListItem
-            id={id}
+          <ResultListItem
             name={feedItem.name}
             playcount={feedItem.playcount}
             listeners={feedItem.listeners}
@@ -35,7 +34,7 @@ const ArtistList: React.FunctionComponent<ArtistListProps> = (
       );
     })
   ) : (
-    <Loader type='TailSpin' color={"#0063dc"} height={100} width={100} />
+    <Loader type='TailSpin' color={"#b90000"} height={100} width={100} />
   );
   const headerContent = feeds
     ? feeds.length !== 0
@@ -58,4 +57,4 @@ const ArtistList: React.FunctionComponent<ArtistListProps> = (
   );
 };
 
-export { ArtistList };
+export { ResultList };

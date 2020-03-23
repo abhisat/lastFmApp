@@ -2,7 +2,7 @@
 
 LastFmApp is an app to search the most populars artists in a country using the LastFm API.
 
-The demo app is hosted on: [FlickrApp](https://flickrapp-demo.herokuapp.com "Flickr App")
+The demo app is hosted on: [LastFMApp](https://lastfm-app-demo.herokuapp.com "LastFM App")
 
 ## Installation and Usage
 
@@ -10,7 +10,9 @@ After cloning the repository with:
 
 git clone https://github.com/abhisat/FlickrApp.git
 
-Dependencies to run the app locally: Docker
+Dependencies to run the app locally:
+
+## With Docker
 
 Step 1: Install Docker
 
@@ -20,14 +22,36 @@ https://docs.docker.com/install/
 Step 2: Run the docker build/run command from the root dir
 
 ```bash
-yarn dev-build (only needed for first-time build)
+docker-compose up --build (only needed for first-time build)
 ```
 
 ```bash
-yarn dev-start (for subsequent runs or after making changes to DockerFile)
+docker-compose up (for subsequent runs or after making changes to DockerFile)
 ```
 
 The app should be accessible on localhost:3001
+
+## Without Docker
+
+Step 1: Add env variables in the .env file to bash
+
+Step 2: From the root dir install node_modules
+
+```bash
+yarn install
+```
+
+Step 3: Start the CORS server
+
+```bash
+yarn start-cors
+```
+
+Step 4: Start the app
+
+```bash
+yarn start-app
+```
 
 ## Tests
 
@@ -41,13 +65,9 @@ from the root or /client dir.
 
 ## Things that can still be improved:
 
-- Add more tests. At the moment there are only snapshot tests and a mockserver sert up to test API requests.
+- Add more tests. At the moment there are only snapshot tests.
 - Improve the UI.
 - Browser compatibility: currently only officially tested for Chrome Version 79.0.3945.130.
-
-## Design Choices:
-
-The app uses a Props-down events-up pattern. Ideally an app like this if grows would need to be a multipage app with state-management. However, given the app is really small, the use of react-router and redux could not be justified.
 
 ## Contributing
 

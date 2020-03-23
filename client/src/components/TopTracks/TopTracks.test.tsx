@@ -1,7 +1,7 @@
 import React from "react";
 import { TopTracks } from "./TopTracks";
 import EnzymeAdapter from "enzyme-adapter-react-16";
-import Enzyme, { mount } from "enzyme";
+import Enzyme, { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 import { createMemoryHistory, createLocation } from "history";
 import { match } from "react-router";
@@ -22,15 +22,15 @@ const mountApp = () => {
     params: { id: "1" }
   };
   const location = createLocation(match.url);
-  const wrapper: Enzyme.ReactWrapper = mount(
+  const wrapper: Enzyme.ShallowWrapper = shallow(
     <TopTracks history={history} location={location} match={match} />
   );
   wrapper.update();
   return wrapper;
 };
 
-describe("<PhotoDetail/>", () => {
-  let App: Enzyme.ReactWrapper;
+describe("<TopTracks/>", () => {
+  let App: Enzyme.ShallowWrapper;
 
   beforeEach(() => {
     App = mountApp();

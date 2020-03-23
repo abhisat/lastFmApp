@@ -1,7 +1,7 @@
 import React, { useState, useEffect, SyntheticEvent, ReactText } from "react";
 import axios from "axios";
 import { SearchBar } from "../SearchBar/SearchBar";
-import { ArtistList } from "../ArtistList/ArtistList";
+import { ResultList } from "../ResultList/ResultList";
 import Logo from "../../assets/logo.png";
 import { Image, Container, PaginationProps } from "semantic-ui-react";
 import { ArtistResponse, ResponseItem } from "../../types/ResponseTypes";
@@ -35,10 +35,11 @@ const Country: React.FunctionComponent<RouteComponentProps> = props => {
   };
 
   const getSearchURL = () => {
-    const corsServerURL = "http://localhost:8081/";
-    let baseAPIUrl = new URL("http://ws.audioscrobbler.com/2.0/");
+    const corsServerURL = process.env.REACT_APP_CORS_SERVER;
+    let baseAPIUrl = new URL(process.env.REACT_APP_BASE_URL);
     const urlParam = new URLSearchParams(props.location.search);
     const country = urlParam.has("q") ? urlParam.get("q") : null;
+    setFeedTitle(`Top Artists in ${country}`);
     baseAPIUrl.searchParams.set("country", country);
     baseAPIUrl.searchParams.set("method", "geo.gettopartists");
     baseAPIUrl.searchParams.set("api_key", "9bfb0463ecfb5dd130cb40efbd898af0");
@@ -69,9 +70,9 @@ const Country: React.FunctionComponent<RouteComponentProps> = props => {
         <Image src={Logo} className={"logo"}></Image>
         <SearchBar />
         {isLoading ? (
-          <Loader type='TailSpin' color={"#0063dc"} height={100} width={100} />
+          <Loader type='TailSpin' color={"#b90000"} height={100} width={100} />
         ) : (
-          <ArtistList
+          <ResultList
             title={feedTitle}
             feeds={feeds}
             isLoading={isLoading}

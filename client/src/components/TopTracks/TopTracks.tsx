@@ -1,9 +1,15 @@
 import React, { useState, useEffect, SyntheticEvent, ReactText } from "react";
 import axios from "axios";
 import { SearchBar } from "../SearchBar/SearchBar";
-import { ArtistList } from "../ArtistList/ArtistList";
+import { ResultList } from "../ResultList/ResultList";
 import Logo from "../../assets/logo.png";
-import { Image, Container, PaginationProps } from "semantic-ui-react";
+import {
+  Image,
+  Container,
+  PaginationProps,
+  Button,
+  Icon
+} from "semantic-ui-react";
 import { TrackResponse, ResponseItem } from "../../types/ResponseTypes";
 import Loader from "react-loader-spinner";
 import { RouteComponentProps } from "react-router-dom";
@@ -35,10 +41,11 @@ const TopTracks: React.FunctionComponent<RouteComponentProps> = props => {
   };
 
   const getSearchURL = () => {
-    const corsServerURL = "http://localhost:8081/";
-    let baseAPIUrl = new URL("http://ws.audioscrobbler.com/2.0/");
+    const corsServerURL = process.env.REACT_APP_CORS_SERVER;
+    let baseAPIUrl = new URL(process.env.REACT_APP_BASE_URL);
     const urlParam = new URLSearchParams(props.location.search);
     const artist = urlParam.has("q") ? urlParam.get("q") : null;
+    setFeedTitle(`Top Tracks by ${artist}`);
     baseAPIUrl.searchParams.set("artist", artist);
     baseAPIUrl.searchParams.set("method", "artist.gettoptracks");
     baseAPIUrl.searchParams.set("api_key", "9bfb0463ecfb5dd130cb40efbd898af0");
@@ -48,19 +55,17 @@ const TopTracks: React.FunctionComponent<RouteComponentProps> = props => {
     return corsServerURL + baseAPIUrl;
   };
 
-  const handleFeedClick = (value, e: SyntheticEvent) => {
-    let route: string = "/artist";
-    route = route.concat("?");
-    route = route.concat(`q=${value}`);
-    history.push(route);
-  };
-
   const handlePaginationClick = (
     e: SyntheticEvent,
     pageInfo: PaginationProps
   ) => {
     let pageNumber: ReactText = pageInfo.activePage;
+    setIsLoading(true);
     setActivePage(pageNumber);
+  };
+
+  const handleBackButtonClick = () => {
+    props.history.goBack();
   };
 
   return (
@@ -68,15 +73,16 @@ const TopTracks: React.FunctionComponent<RouteComponentProps> = props => {
       <Container className='appContainer'>
         <Image src={Logo} className={"logo"}></Image>
         <SearchBar />
+        <Button
+          className='ui button backButton'
+          onClick={handleBackButtonClick}
+        >
+          <Icon name='arrow left' />
+        </Button>
         {isLoading ? (
-          <Loader type='TailSpin' color={"#0063dc"} height={100} width={100} />
+          <Loader type='TailSpin' color={"#b90000"} height={100} width={100} />
         ) : (
-          <ArtistList
-            title={feedTitle}
-            feeds={feeds}
-            isLoading={isLoading}
-            handleFeedClick={handleFeedClick}
-          />
+          <ResultList title={feedTitle} feeds={feeds} isLoading={isLoading} />
         )}
         <Pagination
           className={"pagination"}

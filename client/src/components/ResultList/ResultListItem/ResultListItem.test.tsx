@@ -1,5 +1,5 @@
 import React from "react";
-import { ArtistListItem, ArtistListItemProps } from "./ArtistListItem";
+import { ResultListItem, ResultListItemProps } from "./ResultListItem";
 import EnzymeAdapter from "enzyme-adapter-react-16";
 import Enzyme, { mount } from "enzyme";
 import toJson from "enzyme-to-json";
@@ -10,19 +10,19 @@ Enzyme.configure({
 
 const handleClick: jest.Mock = jest.fn();
 
-const props: ArtistListItemProps = {
-  id: 1,
-  media: "https://live.staticflickr.com/65535/49546287068_db0d0b61b8_m.jpg",
-  title: "GODAVARI BY KERSOM 101 To 108 Series Kurtis Wholesale 8 Pcs",
-  author: 'nobody@flickr.com ("wholesalealisa")',
-  date: "2020-02-17T00:08:53-08:00",
-  tags: "",
-  handleClick: handleClick,
-  isLoading: false
+const props: ResultListItemProps = {
+  name: "Arctic Monkeys",
+  playcount: "349443530",
+  listeners: "3618819",
+  isLoading: false,
+  url: "https://www.last.fm/music/Arctic+Monkeys",
+  image:
+    "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+  handleClick: handleClick
 };
 
 const mountApp = () => {
-  const wrapper: Enzyme.ReactWrapper = mount(<ArtistListItem {...props} />);
+  const wrapper: Enzyme.ReactWrapper = mount(<ResultListItem {...props} />);
   wrapper.update();
   return wrapper;
 };

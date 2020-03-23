@@ -1,3 +1,10 @@
 .loader {
   height: 8rem;
 }
+
+.logo {
+  width: 25%;
+  height: auto;
+  margin: 0 auto;
+  padding: 20px;
+}

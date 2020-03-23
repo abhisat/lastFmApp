@@ -1,15 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ResultList/> Matches the snapshot 1`] = `
-<ResultItem
-  author="nobody@flickr.com (\\"wholesalealisa\\")"
-  date="2020-02-17T00:08:53-08:00"
+exports[`<ArtistListItem/> Matches the snapshot 1`] = `
+<ResultListItem
   handleClick={[MockFunction]}
-  id={1}
+  image="https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
   isLoading={false}
-  media="https://live.staticflickr.com/65535/49546287068_db0d0b61b8_m.jpg"
-  tags=""
-  title="GODAVARI BY KERSOM 101 To 108 Series Kurtis Wholesale 8 Pcs"
+  listeners="3618819"
+  name="Arctic Monkeys"
+  playcount="349443530"
+  url="https://www.last.fm/music/Arctic+Monkeys"
 >
   <Container
     className="resultItemContainer"
@@ -28,12 +27,12 @@ exports[`<ResultList/> Matches the snapshot 1`] = `
           <Image
             as="img"
             className="itemImage"
-            src="https://live.staticflickr.com/65535/49546287068_db0d0b61b8_m.jpg"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
             ui={true}
           >
             <img
               className="ui image itemImage"
-              src="https://live.staticflickr.com/65535/49546287068_db0d0b61b8_m.jpg"
+              src="https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
             />
           </Image>
           <ItemContent
@@ -49,7 +48,7 @@ exports[`<ResultList/> Matches the snapshot 1`] = `
                 <a
                   className="header itemHeader text"
                 >
-                  GODAVARI BY KERSOM 101 To 108 Series Kurtis Wholesale 8 Pcs
+                  Arctic Monkeys
                 </a>
               </ItemHeader>
               <ItemMeta
@@ -60,15 +59,15 @@ exports[`<ResultList/> Matches the snapshot 1`] = `
                 >
                   <Icon
                     as="i"
-                    name="location arrow"
+                    name="play"
                   >
                     <i
                       aria-hidden="true"
-                      className="location arrow icon"
+                      className="play icon"
                       onClick={[Function]}
                     />
                   </Icon>
-                  2020-02-17T00:08:53-08:00
+                  349443530
                 </div>
               </ItemMeta>
               <ItemExtra
@@ -79,15 +78,15 @@ exports[`<ResultList/> Matches the snapshot 1`] = `
                 >
                   <Icon
                     as="i"
-                    name="user"
+                    name="users"
                   >
                     <i
                       aria-hidden="true"
-                      className="user icon"
+                      className="users icon"
                       onClick={[Function]}
                     />
                   </Icon>
-                  nobody@flickr.com ("wholesalealisa")
+                  3618819
                 </div>
               </ItemExtra>
               <ItemExtra
@@ -98,14 +97,15 @@ exports[`<ResultList/> Matches the snapshot 1`] = `
                 >
                   <Icon
                     as="i"
-                    name="tags"
+                    name="linkify"
                   >
                     <i
                       aria-hidden="true"
-                      className="tags icon"
+                      className="linkify icon"
                       onClick={[Function]}
                     />
                   </Icon>
+                  https://www.last.fm/music/Arctic+Monkeys
                 </div>
               </ItemExtra>
             </div>
@@ -114,5 +114,5 @@ exports[`<ResultList/> Matches the snapshot 1`] = `
       </Item>
     </div>
   </Container>
-</ResultItem>
+</ResultListItem>
 `;

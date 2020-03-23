@@ -13,22 +13,13 @@
   height: 7rem;
 }
 
-.itemTags {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 50%;
-}
-
 .resultItemContainer {
   width: 100%;
   display: flex;
 }
-.itemHeader {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 50%;
+
+.itemHeader.itemHeader.itemHeader.itemHeader.itemHeader {
+  color: #b90000 !important;
 }
 
 .text {
