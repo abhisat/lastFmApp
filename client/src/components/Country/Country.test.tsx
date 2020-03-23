@@ -1,5 +1,5 @@
 import React from "react";
-import { Home } from "./Home";
+import { Country } from "./Country";
 import EnzymeAdapter from "enzyme-adapter-react-16";
 import Enzyme, { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
@@ -22,13 +22,13 @@ const mountApp = () => {
   const location = createLocation(match.url);
 
   const wrapper: Enzyme.ShallowWrapper = shallow(
-    <Home history={history} location={location} match={match} />
+    <Country history={history} location={location} match={match} />
   );
   wrapper.update();
   return wrapper;
 };
 
-describe("<Home/>", () => {
+describe("<Country/>", () => {
   let App: Enzyme.ShallowWrapper;
 
   beforeEach(() => {

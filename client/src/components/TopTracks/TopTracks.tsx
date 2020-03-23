@@ -4,13 +4,13 @@ import { SearchBar } from "../SearchBar/SearchBar";
 import { ArtistList } from "../ArtistList/ArtistList";
 import Logo from "../../assets/logo.png";
 import { Image, Container, PaginationProps } from "semantic-ui-react";
-import { ArtistResponse, ResponseItem } from "../../types/ResponseTypes";
+import { TrackResponse, ResponseItem } from "../../types/ResponseTypes";
 import Loader from "react-loader-spinner";
 import { RouteComponentProps } from "react-router-dom";
 import { Pagination } from "semantic-ui-react";
-import "./Home.css";
+import "./TopTracks.css";
 
-const Home: React.FunctionComponent<RouteComponentProps> = props => {
+const TopTracks: React.FunctionComponent<RouteComponentProps> = props => {
   const [feedTitle, setFeedTitle] = useState<string>();
   const [feeds, setFeeds] = useState<ResponseItem[]>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -25,11 +25,11 @@ const Home: React.FunctionComponent<RouteComponentProps> = props => {
 
   const fetchFeeds = async function() {
     const result = await axios(getSearchURL());
-    const parsedFeeds: ArtistResponse = result.data.artists;
+    const parsedFeeds: TrackResponse = result.data.toptracks;
     setTotalPages(parsedFeeds["@attr"]["totalPages"]);
-    parsedFeeds.artist.length > 5
-      ? setFeeds(parsedFeeds.artist.slice(parsedFeeds.artist.length - 5))
-      : setFeeds(parsedFeeds.artist);
+    parsedFeeds.track.length > 5
+      ? setFeeds(parsedFeeds.track.slice(parsedFeeds.track.length - 5))
+      : setFeeds(parsedFeeds.track);
 
     setIsLoading(false);
   };
@@ -37,7 +37,10 @@ const Home: React.FunctionComponent<RouteComponentProps> = props => {
   const getSearchURL = () => {
     const corsServerURL = "http://localhost:8081/";
     let baseAPIUrl = new URL("http://ws.audioscrobbler.com/2.0/");
-    baseAPIUrl.searchParams.set("method", "chart.gettopartists");
+    const urlParam = new URLSearchParams(props.location.search);
+    const artist = urlParam.has("q") ? urlParam.get("q") : null;
+    baseAPIUrl.searchParams.set("artist", artist);
+    baseAPIUrl.searchParams.set("method", "artist.gettoptracks");
     baseAPIUrl.searchParams.set("api_key", "9bfb0463ecfb5dd130cb40efbd898af0");
     baseAPIUrl.searchParams.set("format", "json");
     baseAPIUrl.searchParams.set("limit", itemsPerPage);
@@ -45,7 +48,7 @@ const Home: React.FunctionComponent<RouteComponentProps> = props => {
     return corsServerURL + baseAPIUrl;
   };
 
-  const handleFeedClick = (value: string, e: SyntheticEvent) => {
+  const handleFeedClick = (value, e: SyntheticEvent) => {
     let route: string = "/artist";
     route = route.concat("?");
     route = route.concat(`q=${value}`);
@@ -87,4 +90,4 @@ const Home: React.FunctionComponent<RouteComponentProps> = props => {
   );
 };
 
-export { Home };
+export { TopTracks };

@@ -1,5 +1,5 @@
 import React from "react";
-import { SearchBar, SearchBarProps } from ".";
+import { SearchBar } from ".";
 import Enzyme, { mount, shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 import EnzymeAdapter from "enzyme-adapter-react-16";
@@ -9,18 +9,8 @@ Enzyme.configure({
 });
 const onSearchInput: jest.Mock = jest.fn();
 
-const loadingProps: SearchBarProps = {
-  isLoading: true,
-  onSearchInput: onSearchInput
-};
-
-const inputProps: SearchBarProps = {
-  isLoading: false,
-  onSearchInput: onSearchInput
-};
-
 const shallowMountSearchBar = () => {
-  const wrapper: Enzyme.ShallowWrapper = shallow(<SearchBar {...inputProps} />);
+  const wrapper: Enzyme.ShallowWrapper = shallow(<SearchBar />);
   return wrapper;
 };
 

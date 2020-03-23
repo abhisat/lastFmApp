@@ -1,7 +1,6 @@
-import React from "react";
 import { Home } from "./components/Home";
-import { ArtistList } from "./components/ArtistList/ArtistList";
-import { ArtistDetail } from "./components/ArtistDetail/ArtistDetail";
+import { TopTracks } from "./components/TopTracks";
+import { Country } from "./components/Country/Country";
 
 const Routes = [
   {
@@ -14,13 +13,13 @@ const Routes = [
     path: "/country",
     key: "SEARCH_BY_COUNTRY",
     exact: true,
-    component: ArtistList
+    component: Country
   },
   {
     path: "/artist",
     key: "SEARCH_BY_ARTIST",
     exact: true,
-    component: ArtistDetail
+    component: TopTracks
   }
 ];
 

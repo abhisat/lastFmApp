@@ -1,18 +1,22 @@
-import React, { useState } from "react";
-import { ArtistListItem } from "../ArtistListItem/ArtistListItem";
-import {
-  List,
-  Pagination,
-  Container,
-  PaginationProps,
-  Header
-} from "semantic-ui-react";
+import React, { SyntheticEvent } from "react";
+import { ArtistListItem } from "./ArtistListItem/";
+import { List, Container, Header } from "semantic-ui-react";
 import Loader from "react-loader-spinner";
 import { ResponseItem } from "../../types/ResponseTypes";
 import "./ArtistList.css";
-import { listeners } from "cluster";
 
-const ArtistList: React.FunctionComponent = () => {
+export interface ArtistListProps {
+  title: string;
+  feeds: Array<ResponseItem>;
+  isLoading: boolean;
+  handleFeedClick(value: string, e: SyntheticEvent): void;
+}
+
+const ArtistList: React.FunctionComponent<ArtistListProps> = (
+  props: ArtistListProps
+) => {
+  const { title, feeds, isLoading, handleFeedClick } = props;
+
   const feed = feeds ? (
     feeds.map((feedItem: ResponseItem, id: number) => {
       return (
@@ -34,7 +38,7 @@ const ArtistList: React.FunctionComponent = () => {
     <Loader type='TailSpin' color={"#0063dc"} height={100} width={100} />
   );
   const headerContent = feeds
-    ? feeds.length != 0
+    ? feeds.length !== 0
       ? `... Showing ${title}`
       : `Sorry no content was found.`
     : null;
@@ -49,17 +53,6 @@ const ArtistList: React.FunctionComponent = () => {
         <List divided className={"list"}>
           {feed}
         </List>
-      </Container>
-      <Container className={"paginationContainer"}>
-        {isLoading && totalPages ? null : (
-          <Pagination
-            className={"pagination"}
-            activePage={activePage}
-            onPageChange={handlePaginationClick}
-            totalPages={totalPages}
-            ellipsisItem={null}
-          />
-        )}
       </Container>
     </React.Fragment>
   );

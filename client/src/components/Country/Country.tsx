@@ -8,9 +8,9 @@ import { ArtistResponse, ResponseItem } from "../../types/ResponseTypes";
 import Loader from "react-loader-spinner";
 import { RouteComponentProps } from "react-router-dom";
 import { Pagination } from "semantic-ui-react";
-import "./Home.css";
+import "./Country.css";
 
-const Home: React.FunctionComponent<RouteComponentProps> = props => {
+const Country: React.FunctionComponent<RouteComponentProps> = props => {
   const [feedTitle, setFeedTitle] = useState<string>();
   const [feeds, setFeeds] = useState<ResponseItem[]>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -25,7 +25,7 @@ const Home: React.FunctionComponent<RouteComponentProps> = props => {
 
   const fetchFeeds = async function() {
     const result = await axios(getSearchURL());
-    const parsedFeeds: ArtistResponse = result.data.artists;
+    const parsedFeeds: ArtistResponse = result.data.topartists;
     setTotalPages(parsedFeeds["@attr"]["totalPages"]);
     parsedFeeds.artist.length > 5
       ? setFeeds(parsedFeeds.artist.slice(parsedFeeds.artist.length - 5))
@@ -37,7 +37,10 @@ const Home: React.FunctionComponent<RouteComponentProps> = props => {
   const getSearchURL = () => {
     const corsServerURL = "http://localhost:8081/";
     let baseAPIUrl = new URL("http://ws.audioscrobbler.com/2.0/");
-    baseAPIUrl.searchParams.set("method", "chart.gettopartists");
+    const urlParam = new URLSearchParams(props.location.search);
+    const country = urlParam.has("q") ? urlParam.get("q") : null;
+    baseAPIUrl.searchParams.set("country", country);
+    baseAPIUrl.searchParams.set("method", "geo.gettopartists");
     baseAPIUrl.searchParams.set("api_key", "9bfb0463ecfb5dd130cb40efbd898af0");
     baseAPIUrl.searchParams.set("format", "json");
     baseAPIUrl.searchParams.set("limit", itemsPerPage);
@@ -87,4 +90,4 @@ const Home: React.FunctionComponent<RouteComponentProps> = props => {
   );
 };
 
-export { Home };
+export { Country };

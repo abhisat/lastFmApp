@@ -13,6 +13,10 @@ export interface ResponseItem {
   image: Array<ImageItem>;
 }
 
-export interface Response {
+export interface ArtistResponse {
   artist: Array<ResponseItem>;
+}
+
+export interface TrackResponse {
+  track: Array<ResponseItem>;
 }

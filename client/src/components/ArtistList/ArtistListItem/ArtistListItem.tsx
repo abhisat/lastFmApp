@@ -1,4 +1,4 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import { Image, Item, Icon, Container } from "semantic-ui-react";
 import { Facebook } from "react-content-loader";
 import "./ArtistListItem.css";
@@ -11,7 +11,7 @@ export interface ArtistListItemData {
   url?: string;
   image?: string;
   isLoading: boolean;
-  handleClick(id: number | undefined): void;
+  handleClick(value: string, e: SyntheticEvent): void;
 }
 
 export interface ArtistListItemProps extends ArtistListItemData {
@@ -20,7 +20,6 @@ export interface ArtistListItemProps extends ArtistListItemData {
 
 const ArtistListItem: React.FunctionComponent<ArtistListItemProps> = props => {
   const {
-    id,
     name,
     playcount,
     listeners,
@@ -36,7 +35,7 @@ const ArtistListItem: React.FunctionComponent<ArtistListItemProps> = props => {
         {isLoading ? (
           <Facebook className={"loader"} />
         ) : (
-          <Item className={"listItem"} onClick={() => handleClick(id)}>
+          <Item className={"listItem"} onClick={e => handleClick(name, e)}>
             <Image className={"itemImage"} src={image} />
             <Item.Content className={"itemContent"}>
               <Item.Header as='a' className={"itemHeader text"}>

@@ -1,8 +1,10 @@
 import React from "react";
-import { ArtistDetail, ArtistDetailProps } from "./ArtistDetail";
+import { TopTracks } from "./TopTracks";
 import EnzymeAdapter from "enzyme-adapter-react-16";
 import Enzyme, { mount } from "enzyme";
 import toJson from "enzyme-to-json";
+import { createMemoryHistory, createLocation } from "history";
+import { match } from "react-router";
 
 Enzyme.configure({
   adapter: new EnzymeAdapter()
@@ -10,18 +12,19 @@ Enzyme.configure({
 
 const handlebackButtonClick: jest.Mock = jest.fn();
 
-const props: ArtistDetailProps = {
-  title: "GODAVARI BY KERSOM 101 To 108 Series Kurtis Wholesale 8 Pcs",
-  link: "https://www.flickr.com/photos/186442569@N08/49546287068/",
-  media: "https://live.staticflickr.com/65535/49546287068_db0d0b61b8_m.jpg",
-  publishedDate: "2020-02-17T00:08:53-08:00",
-  author: 'nobody@flickr.com ("wholesalealisa")',
-  tags: "",
-  handleBackButtonClick: handlebackButtonClick
-};
-
 const mountApp = () => {
-  const wrapper: Enzyme.ReactWrapper = mount(<ArtistDetail {...props} />);
+  const history = createMemoryHistory();
+  const path = `/route/:id`;
+  const match: match<{ id: string }> = {
+    isExact: false,
+    path,
+    url: path.replace(":id", "1"),
+    params: { id: "1" }
+  };
+  const location = createLocation(match.url);
+  const wrapper: Enzyme.ReactWrapper = mount(
+    <TopTracks history={history} location={location} match={match} />
+  );
   wrapper.update();
   return wrapper;
 };

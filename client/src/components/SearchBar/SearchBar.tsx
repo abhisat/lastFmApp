@@ -1,16 +1,16 @@
 import React, { SyntheticEvent } from "react";
 import { Dropdown, Container } from "semantic-ui-react";
 import { COUNTRIES_DATA } from "./data/countries.js";
+import { withRouter } from "react-router-dom";
 import "./SearchBar.css";
 
-export interface SearchBarProps {
-  isLoading: boolean;
-  onSearchInput(e: SyntheticEvent, data: object): void;
-}
-
-const SearchBar: React.FunctionComponent<SearchBarProps> = props => {
-  const { isLoading, onSearchInput } = props;
-
+const SearchBar = withRouter(({ history, ...props }) => {
+  const onSearchInput = (e: SyntheticEvent, { value }) => {
+    let route: string = "/country";
+    route = route.concat("?");
+    route = route.concat(`q=${value}`);
+    history.push(route);
+  };
   return (
     <Container className='searchContainer'>
       <Dropdown
@@ -24,6 +24,6 @@ const SearchBar: React.FunctionComponent<SearchBarProps> = props => {
       />
     </Container>
   );
-};
+});
 
 export { SearchBar };
